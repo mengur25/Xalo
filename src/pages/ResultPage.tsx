@@ -117,7 +117,7 @@ const ResultPage = () => {
                     .insert({
                         email: email,
                         full_name: fullName,
-                        phone_number: phoneNumber, // Dùng snake_case nếu cột DB là phone_number
+                        phoneNumber: phoneNumber, // Dùng snake_case nếu cột DB là phone_number
                     })
                     .select('id')
                     .single();
