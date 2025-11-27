@@ -87,25 +87,7 @@ const ResultPage = () => {
             return;
         }
 
-        const { data: existingProfile } = await supabase
-        .from('profiles')
-        .select('id')
-        .eq('email', email)
-        .limit(1)
-        .single();
-
-        if (existingProfile) {
-
-        showSuccess("Email đã tồn tại. Đang tiến hành tải xuống.");
-    } else {
-        // Nếu chưa tồn tại, thực hiện INSERT
-        const { error: profileError } = await supabase
-            .from('profiles')
-            .insert({ /* ... */ });
-
-        if (profileError) throw profileError;
-        showSuccess("Lưu Lead thành công!");
-    }
+        
 
         setIsDownloading(true);
         
