@@ -4,6 +4,7 @@ export interface LearnerProfile {
     name: LearningType;
     code: string; // e.g., HHH
     description: string;
+    image: string;
     ingredients: {
         knowledge: string;
         skills: string;
@@ -18,6 +19,7 @@ export const learnerProfiles: Record<LearningType, LearnerProfile> = {
         name: 'Multi-vitamins',
         code: 'HHH',
         description: 'Bạn là mẫu người học toàn diện, sở hữu nền tảng kiến thức vững chắc (Knowledge), kỹ năng làm bài thi xuất sắc (Skills) và thái độ học tập tích cực (Behavior). Giống như vitamin tổng hợp, bạn có đủ mọi yếu tố cần thiết để đạt kết quả cao.',
+        image: 'Multi-vitamins.png',
         ingredients: {
             knowledge:
                 'Bạn sở hữu nền tảng kiến thức rộng và sâu, được tích lũy qua quá trình học tập bền bỉ. Kiến thức ngữ pháp, từ vựng và cấu trúc câu đều ở mức thành thạo. Bạn dễ dàng tiếp cận các đề khó và hiểu bản chất vấn đề nhanh chóng. Khả năng ghi nhớ và vận dụng cũng rất hiệu quả.',
@@ -36,6 +38,8 @@ export const learnerProfiles: Record<LearningType, LearnerProfile> = {
         name: 'Gummy Bear',
         code: 'LLL',
         description: 'Bạn học tập với tâm thế vui vẻ, thoải mái nhưng đang thiếu cả kiến thức nền tảng, kỹ năng làm bài lẫn kỷ luật học tập. Giống như kẹo dẻo, bạn ngọt ngào, dễ thương nhưng chưa đủ "chất" để đối mặt với kỳ thi cam go.',
+        image: 'Gummy Bear.png',
+        
         ingredients: {
             knowledge:
                 'Bạn còn nhiều lỗ hổng về kiến thức nền như từ vựng và ngữ pháp cơ bản. Sự thiếu hụt này khiến bạn khó hiểu sâu khi tiếp cận các dạng bài mới. Việc ghi nhớ đôi lúc phụ thuộc vào cảm hứng nên không ổn định. Điều này làm bạn dễ quên hoặc nhầm lẫn khi làm bài thi.',
@@ -53,6 +57,8 @@ export const learnerProfiles: Record<LearningType, LearnerProfile> = {
         name: 'Caffeine Tablet',
         code: 'HLH',
         description: 'Bạn có kiến thức tốt và động lực cao, nhưng kỹ năng làm bài thi (Skills) lại là điểm yếu. Giống như viên caffeine, bạn có năng lượng và thực lực nhưng dễ bị "bồn chồn", mất điểm oan vì thiếu chiến thuật.',
+        image: 'Caffeine Tablet.png',
+        
         ingredients: {
             knowledge:
                 'Bạn sở hữu vốn kiến thức tương đối chắc chắn, đặc biệt là ngữ pháp và từ vựng thông dụng. Bạn hiểu bài khá nhanh và ít khi gặp khó trong việc tiếp nhận kiến thức mới. Tuy nhiên, đôi lúc bạn thiếu hệ thống hóa khiến kiến thức chưa thật sự sắc bén. Nhưng tổng thể, nền tảng của bạn là rất tốt.',
@@ -70,7 +76,8 @@ export const learnerProfiles: Record<LearningType, LearnerProfile> = {
         name: 'Vitamin C',
         code: 'LHH',
         description: 'Bạn có kỹ năng làm bài tốt và thái độ học tập tuyệt vời, nhưng nền tảng kiến thức (Knowledge) lại chưa vững. Giống như Vitamin C, bạn tăng đề kháng (kỹ năng/thái độ) tốt nhưng cần nạp thêm chất (kiến thức) để khỏe mạnh thực sự.',
-ingredients: {
+        image: 'Vitamin C.png',
+        ingredients: {
             knowledge:
                 'Nền tảng kiến thức của bạn chưa thật sự vững, nhất là ở từ vựng học thuật và cấu trúc phức tạp. Khi gặp đề yêu cầu phân tích sâu, bạn dễ bị “đuối”. Bạn hiểu cách làm bài nhưng đôi khi không hiểu rõ lý do phía sau. Đây là điểm cốt lõi cần cải thiện.',
             skills:
@@ -83,97 +90,12 @@ ingredients: {
         prescription:
             'Bạn cần ưu tiên củng cố nền tảng kiến thức thông qua việc học sâu – học chắc. Hãy hệ thống hóa lại ngữ pháp, mở rộng từ vựng theo chủ đề và luyện tập có phương pháp. Khi kiến thức nền mạnh lên, kỹ năng của bạn sẽ càng phát huy hiệu quả. Kết hợp giữa học kiến thức và luyện mẹo sẽ giúp bạn tiến xa hơn.'
     },
-    'Placebo': {
-        name: 'Placebo',
-        code: '???', // Placeholder code
-        description: 'Bạn có vẻ ngoài ổn, nhưng thực chất bên trong lại thiếu đi những yếu tố cốt lõi. Cần xem xét lại phương pháp học tập.',
-        ingredients: {
-            knowledge:
-                'Bạn có một lượng kiến thức nhưng không thật sự sâu hoặc rõ ràng. Khi gặp bài nâng cao, bạn nhanh chóng cảm thấy mơ hồ hoặc không chắc chắn. Sự thiếu hệ thống khiến bạn dễ hiểu sai hoặc bị nhiễu giữa các kiến thức. Điều này là nguyên nhân chính dẫn đến sự “ảo tưởng nhẹ” về khả năng.',
-            skills:
-                'Kỹ năng làm bài của bạn ở mức trung bình, không quá yếu nhưng thiếu độ sắc bén. Bạn đôi khi làm theo cảm tính nên kết quả phụ thuộc nhiều vào may mắn. Bạn chưa có chiến lược rõ ràng cho từng dạng bài. Điều này khiến điểm số không ổn định.',
-            behavior:
-                'Thái độ học tập của bạn đôi khi thiếu mục tiêu cụ thể, dẫn đến khó tiến bộ. Bạn học theo cảm hứng hoặc không duy trì được tính kỷ luật lâu dài. Bạn có muốn cải thiện nhưng chưa biết bắt đầu từ đâu. Điều này dễ khiến bạn “đi học nhưng không tiến bộ nhiều”.'
-        },
-        sideEffects:
-            'Bạn có thể cảm thấy mình học nhiều nhưng kết quả lại không phản ánh đúng kỳ vọng. Điều này gây ra sự hoang mang hoặc nghi ngờ năng lực thật. Bạn cũng dễ bị rơi vào trạng thái tự tin thái quá rồi thất vọng khi điểm thấp. Đây là vòng lặp nguy hiểm nếu không điều chỉnh.',
-        prescription:
-            'Bạn cần đánh giá lại toàn diện năng lực để biết rõ điểm mạnh – yếu thật sự. Hãy chọn một lộ trình học có hướng dẫn rõ ràng từ chuyên gia hoặc giáo trình được thiết kế bài bản. Tập trung sửa lỗi nền tảng trước khi học nâng cao. Khi có định hướng đúng, bạn sẽ tiến bộ nhanh và ổn định hơn.'
-
-    },
-    'Antibiotics': {
-        name: 'Antibiotics',
-        code: '???',
-        description: 'Bạn mạnh mẽ và quyết liệt, nhưng đôi khi lại quá cứng nhắc. Cần sự linh hoạt hơn trong tư duy và cách học.',
-        ingredients: {
-            knowledge:
-                'Bạn có lượng kiến thức khá sâu, nhưng lại tập trung quá nhiều vào một số mảng quen thuộc. Việc thiếu sự đa dạng khiến bạn dễ gặp khó khi chuyển sang dạng bài mới. Đôi lúc bạn hiểu sâu nhưng không đủ rộng, dẫn đến thiếu linh hoạt. Đây là điểm gây hạn chế trong bài thi tổng hợp.',
-            skills:
-                'Bạn xử lý đề thi tốt nhưng còn mang tính rập khuôn và ít khi đổi mới. Khi gặp dạng bài không giống các mẫu quen thuộc, bạn dễ bị loay hoay. Bạn có trình độ nhưng chưa thoát khỏi cách làm “cứng nhắc”. Điều này khiến hiệu quả làm bài không đạt tối ưu.',
-            behavior:
-                'Bạn có tính kỷ luật cao và quyết đoán, luôn giữ mục tiêu rõ ràng. Tuy nhiên, sự nghiêm khắc quá mức với bản thân đôi khi gây căng thẳng. Bạn luôn muốn hoàn hảo nên đôi lúc quên mất sự linh hoạt cần thiết. Điều này ảnh hưởng đến tâm lý học tập và hiệu suất dài hạn.'
-        },
-        sideEffects:
-            'Bạn dễ bị stress vì áp lực tự tạo, nhất là khi kết quả không như kỳ vọng. Việc thiếu linh hoạt khiến bạn khó thích nghi với đề thi thay đổi hoặc dạng bài mới. Sự căng thẳng kéo dài có thể dẫn đến kiệt sức hoặc giảm động lực. Điều này ảnh hưởng đến hiệu quả học lâu dài.',
-        prescription:
-            'Bạn cần học cách thoải mái hơn, kết hợp các hoạt động thú vị để cân bằng tinh thần. Thử những phương pháp học mới hoặc dạng bài sáng tạo để tăng tính linh hoạt. Học theo hướng “mở” thay vì ép buộc sẽ giúp bạn tiến bộ tự nhiên hơn. Khi tâm lý thoải mái, hiệu suất của bạn sẽ tăng đáng kể.'
-    },
-    'Painkiller': {
-        name: 'Painkiller',
-        code: '???',
-        description: 'Bạn học để đối phó, để giải quyết vấn đề trước mắt (thi lấy bằng) hơn là đam mê. Hiệu quả tức thời nhưng thiếu bền vững.',
-        ingredients: {
-            knowledge:
-                'Bạn chủ yếu học tủ hoặc học vẹt để phục vụ kỳ thi. Kiến thức tiếp nhận nhanh nhưng lại thiếu chiều sâu nên dễ quên sau khi thi xong. Việc học không đi kèm với hiểu bản chất khiến bạn khó áp dụng vào tình huống thực tế. Điều này khiến khả năng tiến xa bị giới hạn.',
-            skills:
-                'Bạn có khả năng làm bài thi tương đối tốt do thường xuyên luyện các bài mẫu. Tuy nhiên, kỹ năng này thiên về phản xạ có điều kiện, không thật sự bền vững. Khi gặp dạng bài khác mẫu, bạn dễ bị “khựng”. Điều này làm giảm chất lượng điểm nếu đề thi khó.',
-            behavior:
-                'Bạn học phần lớn do áp lực từ bên ngoài chứ không phải động lực nội tại. Khi hết mục tiêu thi cử, bạn dễ mất phương hướng. Bạn ít khi duy trì việc học trong thời gian dài. Điều này khiến tiến bộ không ổn định và thiếu tính bền vững.'
-        },
-        sideEffects:
-            'Bạn dễ quên kiến thức sau kỳ thi vì không hiểu sâu. Việc học đối phó khiến bạn cảm thấy mệt mỏi và thiếu hứng thú với ngôn ngữ. Kỹ năng thực tế yếu khiến bạn khó sử dụng tiếng Anh sau này. Điều này có thể ảnh hưởng đến công việc hoặc học tập dài hạn.',
-        prescription:
-            'Bạn nên tìm cách kết nối việc học với sở thích hoặc mục tiêu cá nhân để tạo động lực thật sự. Thay vì học vẹt, hãy thử học qua ví dụ thực tế, phim, podcast hoặc chủ đề bạn yêu thích. Tập trung vào hiểu bản chất để ghi nhớ lâu hơn. Khi bạn thấy ý nghĩa, việc học sẽ trở nên nhẹ nhàng và hiệu quả hơn.'
-
-    },
-    'Vaccine': {
-        name: 'Vaccine',
-        code: '???',
-        description: 'Bạn đã có sự chuẩn bị tốt từ sớm, tạo ra "hệ miễn dịch" với các khó khăn trong bài thi. Tuy nhiên, cần tiêm nhắc lại (ôn tập) thường xuyên.',
-        ingredients: {
-            knowledge:
-                'Bạn có nền tảng kiến thức tốt do được tích lũy từ sớm hoặc học đều đặn. Bạn hiểu bài nhanh và hiếm khi gặp khó với kiến thức cơ bản. Tuy nhiên, đôi khi bạn thiếu động lực để mở rộng kiến thức mới. Điều này khiến bạn đứng yên sau một thời gian.',
-            skills:
-                'Bạn có kỹ năng khá ổn định, ít mắc lỗi cơ bản trong bài thi. Chiến lược làm bài của bạn rõ ràng và ít khi bị ảnh hưởng bởi áp lực thời gian. Tuy nhiên, bạn thiếu sự bứt phá khi gặp bài khó hoặc cần tốc độ cao. Điều này khiến điểm số có xu hướng “ổn định nhưng không tăng”.',
-            behavior:
-                'Bạn học khá đều đặn nhưng theo quán tính chứ không còn đam mê mạnh. Bạn làm tốt khi có mục tiêu rõ ràng, nhưng dễ bị chững lại khi không có áp lực. Việc duy trì thói quen học diễn ra tự nhiên nhưng đôi lúc hơi mờ nhạt.'
-        },
-        sideEffects:
-            'Bạn dễ rơi vào trạng thái bão hòa, học nhưng không thấy tiến bộ rõ rệt. Sự ổn định lâu ngày có thể khiến bạn chủ quan hoặc mất hứng thú. Điều này khiến hiệu suất giảm nếu không có phương pháp mới. Tình trạng “plateau” khá phổ biến với nhóm này.',
-        prescription:
-            'Bạn nên làm mới phương pháp học để tạo cảm hứng như thử tài liệu mới hoặc cách học sáng tạo. Đặt ra mục tiêu cao hơn để tạo động lực tiến xa hơn. Luyện đề nâng cao hoặc học 1-1 có thể giúp bạn bứt phá. Khi đổi góc tiếp cận, bạn sẽ nhanh chóng thoát khỏi trạng thái bão hòa.'
-    },
-    'Steroids': {
-        name: 'Steroids',
-        code: '???',
-        description: 'Bạn phát triển rất nhanh trong thời gian ngắn, nhưng nền tảng không vững chắc. Cẩn thận với việc "phát triển nóng".',
-        ingredients: {
-            knowledge:
-                'Bạn học nhanh và tiếp thu tốt trong thời gian ngắn, nhưng thiếu thời gian củng cố kiến thức. Khi lượng kiến thức tăng quá nhanh, bạn dễ quên hoặc bị rối. Điều này khiến kiến thức của bạn thiếu chiều sâu và chưa thật sự vững chắc.',
-            skills:
-                'Bạn tiến bộ mạnh ở kỹ năng làm bài do luyện cấp tốc hoặc học theo chương trình tăng tốc. Tuy nhiên, kỹ năng này mang tính tạm thời và dễ mất nếu ngừng luyện. Khi gặp dạng bài mới, bạn dễ chững lại vì thiếu nền tảng hỗ trợ.',
-            behavior:
-                'Bạn học với cường độ rất cao, đôi khi quá sức. Bạn có khả năng tập trung và nỗ lực lớn trong thời gian ngắn. Nhưng cách học “dồn dập” khiến bạn dễ căng thẳng và mệt mỏi. Đây là mô hình học không bền vững.'
-        },
-        sideEffects:
-            'Bạn dễ bị hổng kiến thức nền vì không đủ thời gian hệ thống hóa. Quá tải thông tin có thể khiến bạn bị stress hoặc mất động lực. Học quá nhanh cũng khiến bạn phụ thuộc vào tốc độ thay vì chất lượng. Điều này về lâu dài làm giảm hiệu quả học tập.',
-        prescription:
-            'Bạn nên giảm tốc độ và dành thời gian củng cố lại kiến thức cốt lõi. Học bền vững với lịch trình hợp lý sẽ giúp bạn giữ vững phong độ lâu dài. Hãy xen kẽ giữa luyện đề và ôn lại căn bản để tăng độ ổn định. Khi nền tảng vững, bạn sẽ tiến xa mà không lo kiệt sức.'
-    },
     'Cough Syrup': {
         name: 'Cough Syrup',
         code: 'HHL',
         description: 'Bạn có kiến thức và kỹ năng tốt, nhưng thiếu động lực/thói quen học tập tích cực (Hành vi học tập yếu).',
+        image: 'Cough Syrup.png',
+        
         ingredients: {
             knowledge:
                 'Bạn có kiến thức khá chắc chắn và hiếm khi gặp khó với bài tập. Các mảng ngữ pháp và từ vựng cơ bản đều ở mức ổn định. Tuy nhiên, đôi lúc bạn thiếu sự mở rộng kiến thức nâng cao. Điều này khiến bạn chưa tối ưu hóa được tiềm năng.',
@@ -191,6 +113,7 @@ ingredients: {
         name: 'Omega 3',
         code: 'HLL',
         description: 'Người học có kiến thức nền tảng nhưng thiếu cả chiến lược làm bài và động lực/kỷ luật học tập.',
+        image: 'Omega 3.png',
         ingredients: {
             knowledge:
                 'Bạn có lượng kiến thức nền ở mức khá, đủ để hiểu bài và xử lý các câu cơ bản. Tuy nhiên, kiến thức của bạn chưa được hệ thống nên đôi khi hiểu không trọn vẹn. Điều này gây khó khăn khi gặp câu nâng cao hoặc cần suy luận.',
@@ -209,6 +132,8 @@ ingredients: {
         name: 'Sugar Pill',
         code: 'LHL',
         description: 'Người học có chiến lược làm bài tương đối, nhưng thiếu kiến thức nền và hành vi học tập tích cực.',
+        image: 'Sugar Pill.png',
+        
         ingredients: {
             knowledge:
                 'Kiến thức nền của bạn yếu và chưa đủ để giải quyết nhiều dạng bài nâng cao. Bạn thường hiểu một phần nhưng không đầy đủ, dẫn đến dễ nhầm lẫn. Bạn cần thời gian xây dựng lại gốc rễ vững chắc.',
@@ -226,6 +151,8 @@ ingredients: {
         name: 'Bee Pollen',
         code: 'LLH',
         description: 'Người học có động lực, tinh thần tốt nhưng thiếu cả kiến thức nền và kỹ năng/chiến lược làm bài thi.',
+        image: 'Bee Pollen.png',
+        
         ingredients: {
             knowledge:
                 'Bạn thiếu kiến thức nền tảng nên thường gặp khó với bài tập cơ bản. Ngữ pháp và từ vựng cần được xây dựng lại từ đầu. Đây là lý do khiến bạn dễ bị rối khi học bài mới.',

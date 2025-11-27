@@ -57,8 +57,8 @@ const ResultPage = () => {
     const behaviorScore = Math.abs(rawBehaviorScore);
 
     const createCombinedChartData = (score: number) => {
-        const val1 = Math.round(score * 55); 
-        const val2 = Math.round(score * 40); 
+        const val1 = Math.round(score * 55);
+        const val2 = Math.round(score * 40);
         const safeVal1 = Math.min(val1, 60);
         const safeVal2 = Math.min(val2, 35);
         const remaining = 100 - safeVal1 - safeVal2;
@@ -71,9 +71,9 @@ const ResultPage = () => {
     };
 
     const COLORS = {
-        knowledge: ['#8B9DFF', '#E0E7FF'], 
-        skills: ['#FF8BA7', '#FFE4E9'],    
-        behavior: ['#FFC08B', '#FFF0E0'],   
+        knowledge: ['#8B9DFF', '#E0E7FF'],
+        skills: ['#FF8BA7', '#FFE4E9'],
+        behavior: ['#FFC08B', '#FFF0E0'],
     };
 
     const clickedOn = () => {
@@ -87,10 +87,10 @@ const ResultPage = () => {
             return;
         }
 
-        
+
 
         setIsDownloading(true);
-        
+
 
         try {
             // BƯỚC 1: LƯU LEAD PROFILE VÀO DB
@@ -103,12 +103,12 @@ const ResultPage = () => {
                 });
 
             if (profileError) throw profileError;
-            
+
             // BƯỚC 2: TẠO VÀ TẢI ẢNH KẾT QUẢ
             if (resultRef.current) {
                 const canvas = await html2canvas(resultRef.current, {
-                    scale: 2, 
-                    useCORS: true, 
+                    scale: 2,
+                    useCORS: true,
                     logging: false,
                 });
 
@@ -117,7 +117,7 @@ const ResultPage = () => {
                 link.href = image;
                 link.download = `IELTS_DNA_${profile.code}.png`;
                 link.click();
-                
+
                 showSuccess("Tải ảnh thành công! Thông tin đã được lưu.");
                 setIsModalOpen(false);
             }
@@ -135,7 +135,7 @@ const ResultPage = () => {
                 <header className="w-full bg-white py-6 px-4 md:px-8 flex justify-between items-center border-b border-gray-100 sticky top-0 z-50">
                     <div className="flex items-center space-x-2">
                         <img src="logo-footer.png" alt="" className="w-16" />
-                        <span className="font-bold text-xl tracking-tighter ml-2">XALO ENGLISH</span>
+                        <a href="/" className="font-bold text-xl tracking-tighter ml-2">XALO ENGLISH</a>
                     </div>
                     <div className="hidden md:flex space-x-6 text-sm font-medium text-gray-500">
                         <a href="/" className="hover:text-black transition-colors">HOME</a>
@@ -153,12 +153,9 @@ const ResultPage = () => {
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
                             {/* Left: Text Info */}
                             <div className="md:col-span-7 bg-[#8B9DFF] p-8 md:p-12 rounded-none relative overflow-hidden">
-                                <h2 className="font-serif italic text-4xl md:text-5xl mb-2 text-black">
+                                <h2 className="font-serif italic text-4xl md:text-5xl mb-2 text-black font-lobster">
                                     {profile.name}
                                 </h2>
-                                <p className="text-xl font-bold tracking-widest mb-8 uppercase">
-                                    ({profile.code.split('').join('-')})
-                                </p>
 
                                 <div className="font-mono text-xs md:text-sm space-y-1 mb-8 opacity-70">
                                     <p>{result.learningType}</p>
@@ -173,7 +170,7 @@ const ResultPage = () => {
                             {/* Right: Image Placeholder */}
                             <div className="md:col-span-5 bg-gray-300 min-h-[300px] flex items-center justify-center relative">
                                 <span className="font-serif italic text-4xl text-white">
-                                    <img src="congrat.png" alt="" />
+                                    <img src={profile.image} alt="" />
                                 </span>
                             </div>
                         </div>
@@ -182,7 +179,7 @@ const ResultPage = () => {
 
                 {/* 2. INGREDIENTS SECTION (THÀNH PHẦN) */}
                 <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
-                    <h2 className="font-serif italic text-4xl md:text-5xl text-center mb-16">
+                    <h2 className="font-lobster italic text-4xl md:text-5xl text-start mb-16">
                         THÀNH PHẦN
                     </h2>
 
@@ -226,7 +223,7 @@ const ResultPage = () => {
                 <section className="py-16 bg-[#E0E7FF] px-4 md:px-8">
                     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h2 className="font-serif italic text-4xl md:text-5xl mb-8">
+                            <h2 className="font-lobster italic text-4xl md:text-5xl mb-8">
                                 TÁC DỤNG PHỤ
                             </h2>
                             <p className="text-sm md:text-base leading-relaxed text-gray-800 mb-6">
@@ -248,8 +245,14 @@ const ResultPage = () => {
                 </section>
 
                 {/* 4. HEALTH LEVEL SECTION (MỨC ĐỘ SỨC KHỎE HỌC TẬP) */}
-                <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
-                    <h2 className="font-serif italic text-4xl md:text-5xl text-center mb-16">
+                <section
+                    className="
+                    py-16 px-4 md:px-8 max-w-7xl mx-auto
+                    bg-gradient-to-br from-purple-50 to-white 
+                    from-pink-50 
+                "
+                >
+                    <h2 className="font-serif italic text-4xl md:text-5xl text-center mb-16 font-lobster">
                         MỨC ĐỘ SỨC KHỎE HỌC TẬP
                     </h2>
 
@@ -273,9 +276,9 @@ const ResultPage = () => {
                                             endAngle={-270}
                                             stroke="none"
                                         >
-                                            <Cell fill={COLORS.knowledge[0]} /> 
-                                            <Cell fill="#FF6B6B" />             
-                                            <Cell fill="#f5e8feff" />             
+                                            <Cell fill={COLORS.knowledge[0]} />
+                                            <Cell fill="#FF6B6B" />
+                                            <Cell fill="#f5e8feff" />
                                         </Pie>
                                     </PieChart>
                                 </ResponsiveContainer>
@@ -311,8 +314,8 @@ const ResultPage = () => {
                                             endAngle={-270}
                                             stroke="none"
                                         >
-                                            <Cell fill={COLORS.knowledge[0]} /> 
-                                            <Cell fill="#FF6B6B" />             
+                                            <Cell fill={COLORS.knowledge[0]} />
+                                            <Cell fill="#FF6B6B" />
                                             <Cell fill="#f5e8feff" />
                                         </Pie>
                                     </PieChart>
@@ -369,7 +372,7 @@ const ResultPage = () => {
                         </div>
                     </div>
                 </section>
-                
+
             </div>
 
             {/* 5. FOOTER / CTA */}
@@ -391,42 +394,49 @@ const ResultPage = () => {
             </section>
 
             <footer className="bg-gray-50 py-12 px-4 md:px-8 border-t border-gray-200">
-                    <div className="flex justify-between items-start mb-12">
-                      <div className="flex items-center space-x-1">
-                                  <img src="logo-footer.png" alt="" className="w-16"/>
-            
-                      </div>
-                      <span className="font-serif italic text-3xl">XA LỘ ENGLISH</span>
+                <div className="flex justify-between items-start mb-12">
+                    <div className="flex items-center space-x-1">
+                        <img src="logo-footer.png" alt="" className="w-16" />
+
                     </div>
-            
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-bold uppercase tracking-wider">
-                      <div>
+                    <span className="font-serif italic text-3xl">XA LỘ ENGLISH</span>
+                </div>
+
+                <div className="flex justify-between items-start mb-12 text-xs font-bold uppercase tracking-wider">
+                    <div>
                         <h4 className="mb-4 text-gray-400">CONTACT</h4>
-                        <p>Email: hello@figma.com</p>
-                        <p>Phone: (203) 555-5555</p>
-                      </div>
-                      <div>
+                        <p>Email: hello@xalo.edu.vn</p>
+                        <p>Phone: 0793 159 413</p>
+                    </div>
+                    <div>
                         <h4 className="mb-4 text-gray-400">OPENING HOURS</h4>
                         <div className="flex justify-between max-w-xs">
-                          <span>MON - FRI</span>
-                          <span>5:00 - 23:00</span>
+                            <span>MON - SAT</span>
+                            <span>9AM - 10PM</span>
                         </div>
                         <div className="flex justify-between max-w-xs">
-                          <span>SATURDAYS</span>
-                          <span>8:00 - 19:00</span>
+                            <span>SUNDAYS</span>
+                            <span>8AM - 12PM</span>
                         </div>
-                      </div>
-                      <div>
+                    </div>
+                    <div>
                         <h4 className="mb-4 text-gray-400">SOCIAL</h4>
                         <ul className="space-y-1">
-                          <li>Instagram</li>
-                          <li>X</li>
-                          <li>LinkedIn</li>
+                            <li>
+                                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
+                                    Instagram
+                                </a>
+                            </li>
+                            <li>
+                                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
+                                    Facebook
+                                </a>
+                            </li>
                         </ul>
-                      </div>
                     </div>
+                </div>
 
-                  </footer>
+            </footer>
 
             {/* Email Modal */}
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
@@ -438,7 +448,7 @@ const ResultPage = () => {
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
-                        
+
                         {/* INPUT: FULL NAME */}
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="fullName" className="text-right">
@@ -453,7 +463,7 @@ const ResultPage = () => {
                                 onChange={(e) => setFullName(e.target.value)}
                             />
                         </div>
-                        
+
                         {/* INPUT: EMAIL */}
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="email" className="text-right">

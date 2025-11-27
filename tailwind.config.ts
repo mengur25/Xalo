@@ -18,6 +18,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        // Khai báo tên utility class là 'lobster'
+        lobster: ['Lobster', 'cursive'], 
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

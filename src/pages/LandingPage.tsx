@@ -18,8 +18,8 @@ const LandingPage = () => {
       {/* Header */}
       <header className="w-full bg-white py-6 px-4 md:px-8 flex justify-between items-center border-b border-gray-100 sticky top-0 z-50">
         <div className="flex items-center space-x-2">
-          <img src="logo-footer.png" alt="" className="w-16"/>
-          <span className="font-bold text-xl tracking-tighter ml-2">XALO ENGLISH</span>
+          <img src="logo-footer.png" alt="" className="w-16" />
+          <a href="/" className="font-bold text-xl tracking-tighter ml-2">XALO ENGLISH</a>
         </div>
         <div className="hidden md:flex space-x-6 text-sm font-medium text-gray-500">
           <a href="/" className="hover:text-black transition-colors">HOME</a>
@@ -27,19 +27,19 @@ const LandingPage = () => {
         </div>
         <div className="flex gap-8 items-center justify-end">
 
-        <Link
-          to={"/admin/login"}
-          className="bg-white hidden justify-end hover:bg-gray-100 text-black rounded-none font-bold uppercase text-xs tracking-widest"
+          <Link
+            to={"/admin/login"}
+            className="bg-white hidden justify-end hover:bg-gray-100 text-black rounded-none font-bold uppercase text-xs tracking-widest"
           >
-          Admin
-        </Link>
-        <Button
-          onClick={handleStartQuiz}
-          className="bg-blue-600 hover:bg-blue-700 text-white rounded-none px-6 font-bold uppercase text-xs tracking-widest"
+            Admin
+          </Link>
+          <Button
+            onClick={handleStartQuiz}
+            className="bg-blue-600 hover:bg-blue-700 text-white rounded-none px-6 font-bold uppercase text-xs tracking-widest"
           >
-          Start Test
-        </Button>
-          </div>
+            Start Test
+          </Button>
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -61,7 +61,7 @@ const LandingPage = () => {
             {/* Right Content */}
             <div className="md:col-span-4 flex flex-col justify-between bg-gray-50 p-8">
               <div>
-                <h2 className="text-3xl md:text-4xl font-medium leading-tight mb-6">
+                <h2 className="text-3xl md:text-4xl font-medium font-lobster leading-tight mb-6">
                   Giải mã gen học tập của riêng bạn - và cách “tái lập trình” để đạt band mục tiêu.
                 </h2>
               </div>
@@ -77,7 +77,7 @@ const LandingPage = () => {
           {/* Sub-hero Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             <div className="bg-gray-100 p-8 h-64 flex flex-col justify-between hover:bg-gray-200 transition-colors">
-              <h3 className="text-2xl font-medium leading-tight">
+              <h3 className="text-2xl font-medium leading-tight font-lobster">
                 Được thiết kế bởi đội ngũ chuyên gia ielts của xa lộ english
               </h3>
               <p className="text-xs text-gray-500">
@@ -86,7 +86,7 @@ const LandingPage = () => {
               </p>
             </div>
             <div className="bg-gray-100 p-8 h-64 flex flex-col justify-between hover:bg-gray-200 transition-colors">
-              <h3 className="text-2xl font-medium leading-tight">
+              <h3 className="text-2xl font-medium leading-tight font-lobster">
                 Bản phân tích cá nhân hóa của riêng bạn
               </h3>
               <p className="text-xs text-gray-500">
@@ -96,7 +96,7 @@ const LandingPage = () => {
             </div>
             <div className="bg-gray-300 h-64 flex items-center justify-center relative overflow-hidden">
               <span className="font-serif italic text-2xl text-white">
-                <img src="third.png" alt="" className="h-full"/>
+                <img src="third.png" alt="" className="h-full" />
               </span>
             </div>
           </div>
@@ -107,14 +107,14 @@ const LandingPage = () => {
           <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
             <div className="flex items-baseline mb-12">
               <span className="font-serif italic text-4xl mr-4">ABOUT</span>
-              <span className="text-6xl md:text-8xl font-black text-[#d5b9eb] tracking-tighter">OUR QUIZ</span>
+              <span className="text-6xl md:text-8xl font-black text-[#d5b9eb] tracking-tighter font-lobster">OUR QUIZ</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-0 border-t border-gray-200">
               {/* Sidebar / List */}
-              <div className="md:col-span-4 border-r border-gray-200">
+              <div className="md:col-span-8 border-r border-gray-200">
                 <div className="p-6 border-b border-gray-200 bg-gray-50">
-                  <h3 className="text-2xl font-bold">khía cạnh phân loại</h3>
+                  <h3 className="text-2xl font-bold font-lobster">Khía cạnh phân loại</h3>
                 </div>
 
                 <div className="p-6 border-b border-gray-200 hover:bg-blue-50 transition-colors cursor-default group">
@@ -149,7 +149,7 @@ const LandingPage = () => {
               </div>
 
               {/* Large Image Area */}
-              <div className="md:col-span-8 bg-gray-300 min-h-[500px] flex items-center justify-center relative">
+              <div className="md:col-span-4 bg-gray-300 min-h-[400px] flex items-center justify-center relative">
                 <span className="font-serif italic text-6xl text-white">
                   <img src="fouth.png" alt="" />
                 </span>
@@ -161,7 +161,7 @@ const LandingPage = () => {
         {/* Call to Action / Formulas */}
         <div className="bg-[#f8f2fc] text-white py-20 text-center">
           <p className="text-xs font-bold tracking-widest uppercase mb-4">YOUR IELTS DNA</p>
-          <h2 className="font-serif text-black italic text-5xl md:text-6xl mb-8">MEET THE FORMULAS</h2>
+          <h2 className="font-serif text-black italic text-5xl md:text-6xl mb-8 font-lobster">MEET THE FORMULAS</h2>
           <Button
             onClick={handleStartQuiz}
             className="bg-white text-black hover:bg-gray-100 font-bold py-3 px-8 rounded-sm uppercase tracking-wider mb-12"
@@ -188,35 +188,42 @@ const LandingPage = () => {
       <footer className="bg-gray-50 py-12 px-4 md:px-8 border-t border-gray-200">
         <div className="flex justify-between items-start mb-12">
           <div className="flex items-center space-x-1">
-                      <img src="logo-footer.png" alt="" className="w-16"/>
+            <img src="logo-footer.png" alt="" className="w-16" />
 
           </div>
           <span className="font-serif italic text-3xl">XA LỘ ENGLISH</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-bold uppercase tracking-wider">
+        <div className="flex justify-between items-start mb-12 text-xs font-bold uppercase tracking-wider">
           <div>
             <h4 className="mb-4 text-gray-400">CONTACT</h4>
-            <p>Email: hello@figma.com</p>
-            <p>Phone: (203) 555-5555</p>
+            <p>Email: hello@xalo.edu.vn</p>
+            <p>Phone: 0793 159 413</p>
           </div>
           <div>
             <h4 className="mb-4 text-gray-400">OPENING HOURS</h4>
             <div className="flex justify-between max-w-xs">
-              <span>MON - FRI</span>
-              <span>5:00 - 23:00</span>
+              <span>MON - SAT</span>
+              <span>9AM - 10PM</span>
             </div>
             <div className="flex justify-between max-w-xs">
-              <span>SATURDAYS</span>
-              <span>8:00 - 19:00</span>
+              <span>SUNDAYS</span>
+              <span>8AM - 12PM</span>
             </div>
           </div>
           <div>
             <h4 className="mb-4 text-gray-400">SOCIAL</h4>
             <ul className="space-y-1">
-              <li>Instagram</li>
-              <li>X</li>
-              <li>LinkedIn</li>
+              <li>
+                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
+                  Facebook
+                </a>
+              </li>
             </ul>
           </div>
         </div>
