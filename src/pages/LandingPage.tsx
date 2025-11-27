@@ -161,7 +161,7 @@ const LandingPage = () => {
         {/* Call to Action / Formulas */}
         <div className="bg-[#f8f2fc] text-white py-20 text-center">
           <p className="text-xs font-bold tracking-widest uppercase mb-4">YOUR IELTS DNA</p>
-          <h2 className="font-serif italic text-5xl md:text-6xl mb-8">MEET THE FORMULAS</h2>
+          <h2 className="font-serif text-black italic text-5xl md:text-6xl mb-8">MEET THE FORMULAS</h2>
           <Button
             onClick={handleStartQuiz}
             className="bg-white text-black hover:bg-gray-100 font-bold py-3 px-8 rounded-sm uppercase tracking-wider mb-12"
