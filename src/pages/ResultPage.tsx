@@ -150,10 +150,10 @@ const ResultPage = () => {
                             YOUR IELTS DNA IS...
                         </h1>
 
-                        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-12 ">
                             {/* Left: Text Info */}
                             <div className="md:col-span-7 bg-[#8B9DFF] p-8 md:p-12 rounded-none relative overflow-hidden">
-                                <h2 className="font-serif italic text-4xl md:text-5xl mb-2 text-black font-lobster">
+                                <h2 className="font-serif italic text-4xl md:text-5xl mb-2 text-black font-playfair">
                                     {profile.name}
                                 </h2>
 
@@ -179,7 +179,7 @@ const ResultPage = () => {
 
                 {/* 2. INGREDIENTS SECTION (THÀNH PHẦN) */}
                 <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
-                    <h2 className="font-lobster italic text-4xl md:text-5xl text-start mb-16">
+                    <h2 className="font-playfair italic text-4xl md:text-5xl text-start mb-16">
                         THÀNH PHẦN
                     </h2>
 
@@ -223,7 +223,7 @@ const ResultPage = () => {
                 <section className="py-16 bg-[#E0E7FF] px-4 md:px-8">
                     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h2 className="font-lobster italic text-4xl md:text-5xl mb-8">
+                            <h2 className="font-playfair italic text-4xl md:text-5xl mb-8">
                                 TÁC DỤNG PHỤ
                             </h2>
                             <p className="text-sm md:text-base leading-relaxed text-gray-800 mb-6">
@@ -247,12 +247,12 @@ const ResultPage = () => {
                 {/* 4. HEALTH LEVEL SECTION (MỨC ĐỘ SỨC KHỎE HỌC TẬP) */}
                 <section
                     className="
-                    py-16 px-4 md:px-8 max-w-7xl mx-auto
+                    py-16 px-4 md:px-8 max-w-full mx-auto
                     bg-gradient-to-br from-purple-50 to-white 
                     from-pink-50 
                 "
                 >
-                    <h2 className="font-serif italic text-4xl md:text-5xl text-center mb-16 font-lobster">
+                    <h2 className="font-serif italic text-4xl md:text-5xl text-center mb-16 font-playfair">
                         MỨC ĐỘ SỨC KHỎE HỌC TẬP
                     </h2>
 
