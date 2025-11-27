@@ -389,7 +389,7 @@ const ResultPage = () => {
                     onClick={clickedOn}
                     disabled={isDownloading}
                 >
-                    NHẬN LỘ TRÌNH
+                    NHẬN KẾT QUẢ CỦA BẠN
                 </Button>
             </section>
 
@@ -442,7 +442,7 @@ const ResultPage = () => {
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
-                        <DialogTitle>Nhận kết quả & Lộ trình</DialogTitle>
+                        <DialogTitle>Nhận kết quả</DialogTitle>
                         <DialogDescription>
                             Vui lòng nhập Họ và Tên cùng Email để tải xuống kết quả chi tiết và nhận lộ trình học tập được cá nhân hóa.
                         </DialogDescription>
@@ -495,7 +495,7 @@ const ResultPage = () => {
                     </div>
                     <DialogFooter>
                         <Button type="submit" onClick={handleDownload} disabled={isDownloading}>
-                            {isDownloading ? "Đang xử lý..." : "Tải kết quả & Nhận lộ trình"}
+                            {isDownloading ? "Đang xử lý..." : "Tải kết quả của bạn"}
                         </Button>
                     </DialogFooter>
                 </DialogContent>
