@@ -25,6 +25,8 @@ const QuizPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [showResultReady, setShowResultReady] = useState(false);
+  const [calculatedResult, setCalculatedResult] = useState<any>(null);
   const navigate = useNavigate();
 
 
@@ -147,7 +149,8 @@ const QuizPage = () => {
     } finally {
       setSubmitting(false);
       // Chuyển trang kết quả dù có lỗi lưu DB hay không
-      navigate("/results", { state: { result: finalResult || calculateScore(questions, userAnswers) } });
+      setCalculatedResult(finalResult || calculateScore(questions, userAnswers));
+      setShowResultReady(true);
     }
   };
 
@@ -181,6 +184,35 @@ const QuizPage = () => {
         </div>
 
         <div className="bg-white py-4">
+          <MadeWithDyad />
+        </div>
+      </div>
+    );
+  }
+
+  if (showResultReady) {
+    return (
+      <div className="min-h-screen flex flex-col bg-[#8B9DFF] font-sans text-black">
+        <div className="flex-grow flex flex-col items-center justify-center p-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none">
+            KẾT QUẢ CỦA BẠN ĐÃ SẴN SÀNG
+          </h1>
+
+          <p className="text-base md:text-xl mb-12 max-w-2xl font-medium leading-relaxed">
+            Hệ thống đã phân tích xong phản ứng học tập của bạn.
+            <br className="hidden md:block" />
+            Hãy xem công thức học tập được cá nhân hóa dành riêng cho bạn.
+          </p>
+
+          <Button
+            onClick={() => navigate("/results", { state: { result: calculatedResult } })}
+            className="bg-black hover:bg-gray-800 text-white font-bold py-6 px-12 rounded-[5px] shadow-lg text-lg uppercase"
+          >
+            XEM KẾT QUẢ
+          </Button>
+        </div>
+
+        <div className="bg-white py-4 w-full">
           <MadeWithDyad />
         </div>
       </div>
