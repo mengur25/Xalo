@@ -80,72 +80,49 @@ const ResultPage = () => {
         setIsModalOpen(true);
     };
 
-     const handleDownload = async () => {
-        // 1. KIỂM TRA INPUT
+    const handleDownload = async () => {
+        // Bổ sung kiểm tra phoneNumber
         if (!email || !fullName || !phoneNumber) {
             showError("Vui lòng nhập Họ và Tên, Email và Số điện thoại để tiếp tục.");
             return;
         }
 
+        const { data: existingProfile } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('email', email)
+        .limit(1)
+        .single();
+
+        if (existingProfile) {
+
+        showSuccess("Email đã tồn tại. Đang tiến hành tải xuống.");
+    } else {
+        // Nếu chưa tồn tại, thực hiện INSERT
+        const { error: profileError } = await supabase
+            .from('profiles')
+            .insert({ /* ... */ });
+
+        if (profileError) throw profileError;
+        showSuccess("Lưu Lead thành công!");
+    }
+
         setIsDownloading(true);
         
+
         try {
-            // 2. KIỂM TRA EMAIL TỒN TẠI (SELECT)
-            const { data: existingProfile, error: selectError } = await supabase
+            // BƯỚC 1: LƯU LEAD PROFILE VÀO DB
+            const { error: profileError } = await supabase
                 .from('profiles')
-                .select('id')
-                .eq('email', email)
-                .limit(1)
-                .single();
+                .insert({
+                    email: email,
+                    full_name: fullName,
+                    phoneNumber: phoneNumber, // <-- THÊM CỘT MỚI
+                });
 
-            if (selectError && selectError.code !== 'PGRST116') { // PGRST116: Không tìm thấy dòng (chính xác là cái ta cần)
-                throw selectError;
-            }
-
-            let profileId = existingProfile?.id;
-            let isNewProfile = false;
-
-            // 3. XỬ LÝ INSERT HOẶC THÔNG BÁO TỒN TẠI
-            if (existingProfile) {
-                // Đã tồn tại, không cần INSERT
-                showSuccess("Email đã tồn tại. Đang tiến hành tải xuống.");
-                profileId = existingProfile.id;
-            } else {
-                // Chưa tồn tại, thực hiện INSERT
-                const { data: newProfile, error: insertError } = await supabase
-                    .from('profiles')
-                    .insert({
-                        email: email,
-                        full_name: fullName,
-                        phoneNumber: phoneNumber, // Dùng snake_case nếu cột DB là phone_number
-                    })
-                    .select('id')
-                    .single();
-
-                if (insertError) throw insertError;
-                
-                showSuccess("Lưu Lead thành công!");
-                profileId = newProfile.id;
-                isNewProfile = true;
-            }
-
-            // 4. LƯU KẾT QUẢ QUIZ VÀO BẢNG quiz_results
-            if (profileId) {
-                const { error: resultError } = await supabase
-                    .from('quiz_results')
-                    // Giả định bạn có các trường score và learning_type để lưu kết quả
-                    .insert({
-                        profile_id: profileId,
-                        knowledge_score: result.knowledgeScore,
-                        skills_score: result.skillsScore,
-                        behavior_score: result.behaviorScore,
-                        learning_type: result.learningType,
-                    });
-                
-                if (resultError) throw resultError;
-            }
-
-            // 5. TẠO VÀ TẢI ẢNH KẾT QUẢ (Không thay đổi)
+            if (profileError) throw profileError;
+            
+            // BƯỚC 2: TẠO VÀ TẢI ẢNH KẾT QUẢ
             if (resultRef.current) {
                 const canvas = await html2canvas(resultRef.current, {
                     scale: 2, 
@@ -164,8 +141,7 @@ const ResultPage = () => {
             }
         } catch (error: any) {
             console.error("Error saving lead or generating image:", error.message);
-            // Xử lý lỗi đặc biệt nếu cột `phone_number` không tồn tại hoặc lỗi khác
-            showError("Có lỗi xảy ra khi lưu thông tin. Vui lòng kiểm tra lại Email và Số điện thoại.");
+            showError("Có lỗi xảy ra khi lưu thông tin. Vui lòng thử lại.");
         } finally {
             setIsDownloading(false);
         }
