@@ -72,7 +72,6 @@ const LearnerTypeManager = () => {
                         <TableHead><Brain size={16} className="inline mr-1" />Kiến thức</TableHead>
                         <TableHead><Zap size={16} className="inline mr-1" />Kỹ năng</TableHead>
                         <TableHead><Smile size={16} className="inline mr-1" />Thái độ</TableHead>
-                        <TableHead className="w-[30%]">Đơn thuốc (Prescription)</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -83,9 +82,7 @@ const LearnerTypeManager = () => {
                             <TableCell>{renderStatus(type.knowledge_level)}</TableCell>
                             <TableCell>{renderStatus(type.skills_level)}</TableCell>
                             <TableCell>{renderStatus(type.behavioral_level)}</TableCell>
-                            <TableCell className="text-xs text-gray-600">
-                                {type.prescription || 'Chưa cập nhật'}
-                            </TableCell>
+                            
                         </TableRow>
                     ))}
                 </TableBody>
