@@ -159,14 +159,14 @@ const LandingPage = () => {
               <span className="text-6xl md:text-8xl font-black text-[#9494FF] tracking-tighter font-bricolage">OUR QUIZ</span>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-12 gap-0 bg-[#F4F4FF] border-t border-b">
+            <div className="grid grid-cols-2 md:grid-cols-10 gap-0 bg-[#F4F4FF] border-t border-b">
               {/* Sidebar / List */}
               <div className="md:col-span-3  max-h-[250px]">
                 <div className="p-6 border-b border-gray-200">
                   <h3 className="text-6xl font-bricolage ">khía cạnh phân loại</h3>
                 </div>
 
-                <div className="p-6 border-b border-gray-200 hover:bg-blue-50 transition-colors cursor-default group">
+                <div className="p-6 border-b border-gray-200 min-h-[30%] transition-colors cursor-default group">
                   <h4 className="font-bold text-lg mb-2 flex items-center font-bricolage">
                     <Brain className="w-5 h-5 mr-2 text-blue-500" />
                     KNOWLEDGE (KIẾN THỨC)
@@ -176,7 +176,7 @@ const LandingPage = () => {
                   </p>
                 </div>
 
-                <div className="p-6 border-b border-gray-200 hover:bg-blue-50 transition-colors cursor-default group">
+                <div className="p-6 border-b border-gray-200 min-h-[30%]  transition-colors cursor-default group">
                   <h4 className="font-bold text-lg mb-2 flex items-center">
                     <Zap className="w-5 h-5 mr-2 text-yellow-500 font-bricolage" />
                     TEST-TAKING SKILLS (KỸ NĂNG LÀM BÀI THI)
@@ -186,7 +186,7 @@ const LandingPage = () => {
                   </p>
                 </div>
 
-                <div className="p-6 hover:bg-blue-50 transition-colors cursor-default group">
+                <div className="p-6  transition-colors min-h-[30%] cursor-default group">
                   <h4 className="font-bold text-lg mb-2 flex items-center font-bricolage">
                     <Heart className="w-5 h-5 mr-2 text-red-500" />
                     BEHAVIORAL PATTERNS (HÀNH VI)
@@ -198,7 +198,7 @@ const LandingPage = () => {
               </div>
 
               {/* Large Image Area */}
-              <div className="md:col-span-9 max-h-[700px] w-full flex items-center justify-center relative overflow-hidden">
+              <div className="md:col-span-7 max-h-[900px] w-full flex items-center justify-center relative overflow-hidden">
                 <span className="font-serif italic text-6xl text-white">
                   <img src="fouth.png" alt="" className="h-full w-full"/>
                 </span>
