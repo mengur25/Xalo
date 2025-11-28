@@ -20,7 +20,9 @@ export default {
     extend: {
       fontFamily: {
         // Khai báo tên utility class là 'lobster'
-        playfair: ['Playfair', 'cursive'], 
+        'playfair': ['Playfair Display', 'serif'],
+        'lobster': ['Lobster', 'cursive'],
+        'bricolage': ['Bricolage Grotesque', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -93,57 +93,57 @@ const LandingPage = () => {
 
       {/* Hero Section */}
       <main className="flex-grow">
-        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-20">
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-12 text-center">
+        <div className="w-full pt-12">
+          <h1 className="text-8xl md:text-10xl font-black tracking-tighter mb-12 text-center">
             DECODE YOUR <span className="text-[#9494FF]">IELTS DNA</span>
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 bg-[#F4F4FF] border border-b max-h-[600px]">
             {/* Left Image Placeholder */}
-            <div className="md:col-span-8 bg-gray-200 h-96 rounded-none flex items-center justify-center relative overflow-hidden group">
-              <span className="font-serif italic text-4xl text-white z-10">
-                <img src="second.png" alt="" />
+            <div className="bg-[#F4F4FF] h-[80%] md:col-span-8 flex items-center justify-center overflow-hidden">
+              <span className="font-serif italic text-2xl text-white">
+                <img src="second.png" alt="" className="" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-200 to-purple-200 opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
             </div>
 
             {/* Right Content */}
-            <div className="md:col-span-4 flex flex-col justify-between bg-gray-50 p-8">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-medium font-playfair leading-tight mb-6">
-                  Giải mã gen học tập của riêng bạn - và cách “tái lập trình” để đạt band mục tiêu.
+            <div className="md:col-span-4 h-[50%] flex flex-col items-center justify-between bg-[#F4F4FF]">
+              <div className="p-6 ">
+                <h2 className="text-4xl md:text-5xl font-bricolage leading-tight mb-6">
+                  giải mã gen học tập của riêng bạn - và cách “tái lập trình” để đạt band mục tiêu.
                 </h2>
               </div>
+
               <Button
                 onClick={handleStartQuiz}
-                className="w-full bg-[#9494FF] hover:bg-[#8494FF]  text-white py-8 text-lg font-bold uppercase tracking-wider rounded-sm shadow-lg hover:shadow-xl transition-all"
-              >
+                className="w-[90%] bg-[#9494FF] hover:bg-[#8494FF]  text-white py-8 text-lg mb-16 font-bold uppercase tracking-wider rounded-sm shadow-lg hover:shadow-xl transition-all"
+                >
                 Bắt đầu
               </Button>
             </div>
           </div>
 
           {/* Sub-hero Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-            <div className="bg-gray-100 p-8 h-64 flex flex-col justify-between hover:bg-gray-200 transition-colors">
-              <h3 className="text-2xl font-medium leading-tight font-playfair">
-                Được thiết kế bởi đội ngũ chuyên gia ielts của xa lộ english
+          <div className="grid grid-cols-1 md:grid-cols-3 min-h-[400px]">
+            <div className="bg-[#F4F4FF] p-8 h-100 flex flex-col justify-between transition-colors border-r">
+              <h3 className="text-5xl  leading-tight font-bricolage">
+                được thiết kế bởi đội ngũ chuyên gia ielts của xa lộ english
               </h3>
-              <p className="text-xs text-gray-500">
+              <p className="text-md text-gray-500">
                 Tìm "liều thuốc học" phù hợp nhất cho chính mình.
                 Bắt đầu ngay để không còn "học mãi mà không tiến".
               </p>
             </div>
-            <div className="bg-gray-100 p-8 h-64 flex flex-col justify-between hover:bg-gray-200 transition-colors">
-              <h3 className="text-2xl font-medium leading-tight font-playfair">
-                Bản phân tích cá nhân hóa của riêng bạn
+            <div className="bg-[#F4F4FF] p-8 h-100 flex flex-col justify-between transition-colors">
+              <h3 className="text-5xl  leading-tight font-bricolage">
+                bản phân tích cá nhân hóa của riêng bạn
               </h3>
-              <p className="text-xs text-gray-500">
+              <p className="text-md text-gray-500">
                 Chẩn đoán trình độ học tập ngay tại nhà!
                 Bắt đầu hành trình "tái lập trình" IELTS của bạn.
               </p>
             </div>
-            <div className="bg-gray-300 h-64 flex items-center justify-center relative overflow-hidden">
+            <div className="bg-[#F4F4FF] h-full flex items-center justify-center relative overflow-hidden">
               <span className="font-serif italic text-2xl text-white">
                 <img src="third.png" alt="" className="h-full" />
               </span>
@@ -152,34 +152,34 @@ const LandingPage = () => {
         </div>
 
         {/* About Section */}
-        <div className="w-full border-t border-black">
-          <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-            <div className="flex items-baseline mb-12">
-              <span className="font-serif italic text-4xl mr-4">ABOUT</span>
-              <span className="text-6xl md:text-8xl font-black text-[#9494FF] tracking-tighter font-playfair">OUR QUIZ</span>
+        <div className="w-full border-t border-black min-h-[250px]">
+          <div className="max-w-full mx-auto min-h-full">
+            <div className="flex items-baseline mt-6 mb-2">
+              <span className="font-serif italic text-4xl mr-4 ms-4">ABOUT</span>
+              <span className="text-6xl md:text-8xl font-black text-[#9494FF] tracking-tighter font-bricolage">OUR QUIZ</span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-0 border-t border-gray-200">
+            <div className="grid grid-cols-2 md:grid-cols-12 gap-0 bg-[#F4F4FF] border-t border-b">
               {/* Sidebar / List */}
-              <div className="md:col-span-8 border-r border-gray-200">
-                <div className="p-6 border-b border-gray-200 bg-gray-50">
-                  <h3 className="text-2xl font-bold font-playfair">Khía cạnh phân loại</h3>
+              <div className="md:col-span-3  max-h-[250px]">
+                <div className="p-6 border-b border-gray-200">
+                  <h3 className="text-6xl font-bricolage ">khía cạnh phân loại</h3>
                 </div>
 
                 <div className="p-6 border-b border-gray-200 hover:bg-blue-50 transition-colors cursor-default group">
-                  <h4 className="font-bold text-lg mb-2 flex items-center">
+                  <h4 className="font-bold text-lg mb-2 flex items-center font-bricolage">
                     <Brain className="w-5 h-5 mr-2 text-blue-500" />
                     KNOWLEDGE (KIẾN THỨC)
                   </h4>
                   <p className="text-sm text-gray-600">
-                    Mức độ hiểu biết về ngữ pháp, từ vựng, và các khả năng ngôn ngữ cũng như chiến lược.
+                    Mức độ hiểu biết về ngữ pháp, từ vựng, và các khả năng ngôn ngữ cũng như chiến lược, cách thức làm từng dạng bài trong từng kỹ năng riêng biệt.
                   </p>
                 </div>
 
                 <div className="p-6 border-b border-gray-200 hover:bg-blue-50 transition-colors cursor-default group">
                   <h4 className="font-bold text-lg mb-2 flex items-center">
-                    <Zap className="w-5 h-5 mr-2 text-yellow-500" />
-                    TEST-TAKING SKILLS (KỸ NĂNG)
+                    <Zap className="w-5 h-5 mr-2 text-yellow-500 font-bricolage" />
+                    TEST-TAKING SKILLS (KỸ NĂNG LÀM BÀI THI)
                   </h4>
                   <p className="text-sm text-gray-600">
                     Kỹ năng quản lý thời gian, nhận biết dạng bài, và áp dụng kĩ thuật làm bài.
@@ -187,7 +187,7 @@ const LandingPage = () => {
                 </div>
 
                 <div className="p-6 hover:bg-blue-50 transition-colors cursor-default group">
-                  <h4 className="font-bold text-lg mb-2 flex items-center">
+                  <h4 className="font-bold text-lg mb-2 flex items-center font-bricolage">
                     <Heart className="w-5 h-5 mr-2 text-red-500" />
                     BEHAVIORAL PATTERNS (HÀNH VI)
                   </h4>
@@ -198,9 +198,9 @@ const LandingPage = () => {
               </div>
 
               {/* Large Image Area */}
-              <div className="md:col-span-4 bg-gray-300 min-h-[400px] flex items-center justify-center relative">
+              <div className="md:col-span-9 max-h-[700px] w-full flex items-center justify-center relative overflow-hidden">
                 <span className="font-serif italic text-6xl text-white">
-                  <img src="fouth.png" alt="" />
+                  <img src="fouth.png" alt="" className="h-full w-full"/>
                 </span>
               </div>
             </div>
@@ -208,9 +208,9 @@ const LandingPage = () => {
         </div>
 
         {/* Call to Action / Formulas */}
-        <div className="bg-[#f8f2fc] text-white py-20 text-center">
+        <div className="bg-[#808CFD] text-white py-20 text-center">
           <p className="text-xs font-bold tracking-widest uppercase mb-4">YOUR IELTS DNA</p>
-          <h2 className="font-playfair text-black italic text-5xl md:text-6xl mb-8 ">MEET THE FORMULAS</h2>
+          <h2 className="font-bricolage text-black text-5xl md:text-6xl mb-8 ">meet the fomulas</h2>
           <Button
             onClick={handleStartQuiz}
             className="bg-white text-black hover:bg-gray-100 font-bold py-3 px-8 rounded-sm uppercase tracking-wider mb-12"
@@ -234,16 +234,16 @@ const LandingPage = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-50 py-12 px-4 md:px-8 border-t border-gray-200">
-        <div className="flex justify-between items-start mb-12">
+      <footer className="bg-[#F4F4FF] px-4 border-t border-gray-200 min-h-[300px] flex flex-col">
+        <div className="flex justify-between items-start mt-6">
           <div className="flex items-center space-x-1">
             <img src="logo-footer.png" alt="" className="w-16" />
 
           </div>
-          <span className="font-serif italic text-3xl">XA LỘ ENGLISH</span>
+          <span className="font-bricolage italic text-3xl">XA LỘ ENGLISH</span>
         </div>
 
-        <div className="flex justify-between items-start mb-12 text-xs font-bold uppercase tracking-wider">
+        <div className="flex justify-between items-start mt-auto mb-6 text-xs font-bold uppercase tracking-wider">
           <div>
             <h4 className="mb-4 text-gray-400">CONTACT</h4>
             <p>Email: hello@xalo.edu.vn</p>
@@ -276,11 +276,10 @@ const LandingPage = () => {
             </ul>
           </div>
         </div>
-
-        <div className="mt-12 text-center">
+      </footer>
+        <div className="min-w-full mt-6 text-center">
           <MadeWithDyad />
         </div>
-      </footer>
     </div>
   );
 };
