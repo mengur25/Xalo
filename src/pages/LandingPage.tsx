@@ -98,68 +98,70 @@ const LandingPage = () => {
             DECODE YOUR <span className="text-[#9494FF]">IELTS DNA</span>
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 bg-[#F4F4FF] **md:max-h-[600px]**">
+<div className="grid grid-cols-1 lg:grid-cols-12 bg-[#F4F4FF] lg:max-h-[600px]">
+    
+    {/* Left Image Placeholder */}
+    {/* Áp dụng col-span và order từ LG trở lên */}
+    <div className="bg-[#F4F4FF] lg:h-full lg:col-span-8 flex items-center justify-start overflow-hidden order-2 lg:order-1">
+        <img src="second.png" alt="" className="w-full h-full object-contain" />
+    </div>
 
-            {/* Left Image Placeholder (Thứ tự hiển thị 1 trên mobile) */}
-            <div className="bg-[#F4F4FF] **md:h-full** md:col-span-7 flex items-center justify-center overflow-hidden **order-2 md:order-1**">
-              <span className="font-serif italic text-2xl text-white">
-                <img src="second.png" alt="" className="w-full h-full object-contain" />
-              </span>
-            </div>
+    {/* Right Content */}
+    {/* Áp dụng col-span và order từ LG trở lên */}
+    <div className="lg:col-span-4 lg:h-full flex flex-col items-center justify-center bg-[#F4F4FF] order-1 lg:order-2">
 
-            {/* Right Content (Thứ tự hiển thị 2 trên mobile) */}
-            <div className="md:col-span-5 **md:h-full** flex flex-col items-center justify-between bg-[#F4F4FF] **order-1 md:order-2**">
+      <div className="p-6 py-8 flex flex-col items-center">
+        
+        {/* Điều chỉnh font-size để tránh tràn chữ trên mobile/tablet */}
+        <h2 className="text-4xl lg:text-5xl font-bricolage leading-tight mb-6">
+          giải mã gen học tập của riêng bạn - và cách “tái lập trình” để đạt band mục tiêu.
+        </h2>
 
-              <div className="p-6 ">
-                {/* Giảm kích thước font mặc định trên mobile, tăng lên từ sm: hoặc md: */}
-                <h2 className="text-4xl sm:text-6xl font-bricolage leading-tight mb-6">
-                  giải mã gen học tập của riêng bạn - và cách “tái lập trình” để đạt band mục tiêu.
-                </h2>
-              </div>
+        <Button
+          onClick={handleStartQuiz}
+          className="w-[90%] bg-[#9494FF] hover:bg-[#8494FF] text-white py-8 text-lg mt-16 font-bold uppercase tracking-wider rounded-sm shadow-lg hover:shadow-xl transition-all"
+        >
+          Bắt đầu
+        </Button>
+      </div>
 
-              <Button
-                onClick={handleStartQuiz}
-                className="w-[90%] bg-[#9494FF] hover:bg-[#8494FF]  text-white py-8 text-lg mb-4 md:mb-16 font-bold uppercase tracking-wider rounded-sm shadow-lg hover:shadow-xl transition-all"
-              >
-                Bắt đầu
-              </Button>
-            </div>
-          </div>
+    </div>
+</div>
 
           {/* Sub-hero Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 min-h-[400px] md:border-t">
-    
+<div className="grid grid-cols-1 lg:grid-cols-3 min-h-[400px] lg:border-t">
+
     {/* Cột 1: Chuyên gia */}
-    <div className="bg-[#F4F4FF] p-8 **h-full** flex flex-col justify-between transition-colors lg:border-r md:border-b">
+    <div className="bg-[#F4F4FF] p-8 h-full flex flex-col justify-between transition-colors lg:border-r **lg:border-b**">
         <h3 className="text-5xl leading-tight font-bricolage">
             được thiết kế bởi đội ngũ chuyên gia ielts của xa lộ english
         </h3>
-        {/* Thêm khoảng cách ở đây để đẩy paragraph xuống dưới */}
-        <div className="mt-8"> 
-             <p className="text-md text-gray-500">
+        <div className="mt-8">
+            {/* Giảm font size mặc định và tăng trên màn hình lớn */}
+            <p className="text-md lg:text-2xl text-gray-500">
                 Tìm "liều thuốc học" phù hợp nhất cho chính mình.
                 Bắt đầu ngay để không còn "học mãi mà không tiến".
             </p>
         </div>
     </div>
-    
+
     {/* Cột 2: Phân tích */}
-    <div className="bg-[#F4F4FF] p-8 **h-full** flex flex-col justify-between transition-colors **lg:border-r**">
+    <div className="bg-[#F4F4FF] p-8 h-full flex flex-col justify-between transition-colors lg:border-r">
         <h3 className="text-5xl leading-tight font-bricolage">
             bản phân tích cá nhân hóa của riêng bạn
         </h3>
         <div className="mt-8">
-            <p className="text-md text-gray-500">
+            <p className="text-md lg:text-2xl text-gray-500">
                 Chẩn đoán trình độ học tập ngay tại nhà!
                 Bắt đầu hành trình "tái lập trình" IELTS của bạn.
             </p>
         </div>
     </div>
-    
+
     {/* Cột 3: Hình ảnh */}
     <div className="bg-[#F4F4FF] h-full flex items-center justify-center relative overflow-hidden">
         <span className="font-serif italic text-2xl text-white">
-            <img src="third.png" alt="" className="**h-full w-full object-cover**" />
+            <img src="third.png" alt="" className="h-full w-full object-cover" />
         </span>
     </div>
 </div>
@@ -169,8 +171,8 @@ const LandingPage = () => {
         <div className="w-full border-t border-black min-h-[250px]">
           <div className="max-w-full mx-auto min-h-full">
             <div className="flex items-baseline mt-6 mb-2">
-              <span className="font-serif italic text-4xl mr-4 ms-4">ABOUT</span>
-              <span className="text-6xl md:text-8xl font-black text-[#9494FF] tracking-tighter font-bricolage">OUR QUIZ</span>
+              <span className="font-serif italic text-6xl md:text-4xl sm:text-2xl mr-4 ms-4">ABOUT</span>
+              <span className=" text-8xl md:text-6xl sm:text-4xl font-black text-[#9494FF] tracking-tighter font-bricolage">OUR QUIZ</span>
             </div>
 
             <div className="grid **grid-cols-1** md:grid-cols-10 gap-0 bg-[#F4F4FF] border-t border-b">
@@ -257,54 +259,54 @@ const LandingPage = () => {
 
       {/* Footer */}
       <footer className="bg-[#F4F4FF] px-4 border-t border-gray-200 min-h-[300px] flex flex-col">
-    {/* Phần Logo và Tên thương hiệu: Vẫn giữ nguyên */}
-    <div className="flex justify-between items-start mt-6">
-        <div className="flex items-center space-x-1">
+        {/* Phần Logo và Tên thương hiệu: Vẫn giữ nguyên */}
+        <div className="flex justify-between items-start mt-6">
+          <div className="flex items-center space-x-1">
             <img src="logo-footer.png" alt="" className="w-16" />
+          </div>
+          <span className="font-bricolage italic text-3xl">XA LỘ ENGLISH</span>
         </div>
-        <span className="font-bricolage italic text-3xl">XA LỘ ENGLISH</span>
-    </div>
 
-    <div className="flex flex-col md:flex-row justify-between items-start mt-auto mb-6 text-xs font-bold uppercase tracking-wider">
-        
-        {/* CONTACT */}
-        <div className="mt-6 md:mt-0">
+        <div className="flex flex-col md:flex-row justify-between items-start mt-auto mb-6 text-xs font-bold uppercase tracking-wider">
+
+          {/* CONTACT */}
+          <div className="mt-6 md:mt-0">
             <h4 className="mb-4 text-gray-400">CONTACT</h4>
             <p>Email: hello@xalo.edu.vn</p>
             <p>Phone: 0793 159 413</p>
-        </div>
-        
-        {/* OPENING HOURS */}
-        <div className="mt-6 md:mt-0">
+          </div>
+
+          {/* OPENING HOURS */}
+          <div className="mt-6 md:mt-0">
             <h4 className="mb-4 text-gray-400">OPENING HOURS</h4>
             <div className="flex justify-between max-w-xs">
-                <span>MON - SAT</span>
-                <span>9AM - 10PM</span>
+              <span>MON - SAT</span>
+              <span>9AM - 10PM</span>
             </div>
             <div className="flex justify-between max-w-xs">
-                <span>SUNDAYS</span>
-                <span>8AM - 12PM</span>
+              <span>SUNDAYS</span>
+              <span>8AM - 12PM</span>
             </div>
-        </div>
-        
-        {/* SOCIAL */}
-        <div className="mt-6 md:mt-0">
+          </div>
+
+          {/* SOCIAL */}
+          <div className="mt-6 md:mt-0">
             <h4 className="mb-4 text-gray-400">SOCIAL</h4>
             <ul className="space-y-1">
-                <li>
-                    <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
-                        Instagram
-                    </a>
-                </li>
-                <li>
-                    <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
-                        Facebook
-                    </a>
-                </li>
+              <li>
+                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
+                  Facebook
+                </a>
+              </li>
             </ul>
+          </div>
         </div>
-    </div>
-</footer>
+      </footer>
       <div className="min-w-full mt-6 text-center">
         <MadeWithDyad />
       </div>
