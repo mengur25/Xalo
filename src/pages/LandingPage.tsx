@@ -112,7 +112,7 @@ const LandingPage = () => {
 
               <div className="p-6 ">
                 {/* Giảm kích thước font mặc định trên mobile, tăng lên từ sm: hoặc md: */}
-                <h2 className="text-4xl **sm:text-6xl** font-bricolage leading-tight mb-6">
+                <h2 className="text-4xl sm:text-6xl font-bricolage leading-tight mb-6">
                   giải mã gen học tập của riêng bạn - và cách “tái lập trình” để đạt band mục tiêu.
                 </h2>
               </div>
@@ -257,48 +257,54 @@ const LandingPage = () => {
 
       {/* Footer */}
       <footer className="bg-[#F4F4FF] px-4 border-t border-gray-200 min-h-[300px] flex flex-col">
-        <div className="flex justify-between items-start mt-6">
-          <div className="flex items-center space-x-1">
+    {/* Phần Logo và Tên thương hiệu: Vẫn giữ nguyên */}
+    <div className="flex justify-between items-start mt-6">
+        <div className="flex items-center space-x-1">
             <img src="logo-footer.png" alt="" className="w-16" />
-
-          </div>
-          <span className="font-bricolage italic text-3xl">XA LỘ ENGLISH</span>
         </div>
+        <span className="font-bricolage italic text-3xl">XA LỘ ENGLISH</span>
+    </div>
 
-        <div className="flex justify-between items-start mt-auto mb-6 text-xs font-bold uppercase tracking-wider">
-          <div>
+    <div className="flex flex-col md:flex-row justify-between items-start mt-auto mb-6 text-xs font-bold uppercase tracking-wider">
+        
+        {/* CONTACT */}
+        <div className="mt-6 md:mt-0">
             <h4 className="mb-4 text-gray-400">CONTACT</h4>
             <p>Email: hello@xalo.edu.vn</p>
             <p>Phone: 0793 159 413</p>
-          </div>
-          <div>
+        </div>
+        
+        {/* OPENING HOURS */}
+        <div className="mt-6 md:mt-0">
             <h4 className="mb-4 text-gray-400">OPENING HOURS</h4>
             <div className="flex justify-between max-w-xs">
-              <span>MON - SAT</span>
-              <span>9AM - 10PM</span>
+                <span>MON - SAT</span>
+                <span>9AM - 10PM</span>
             </div>
             <div className="flex justify-between max-w-xs">
-              <span>SUNDAYS</span>
-              <span>8AM - 12PM</span>
+                <span>SUNDAYS</span>
+                <span>8AM - 12PM</span>
             </div>
-          </div>
-          <div>
+        </div>
+        
+        {/* SOCIAL */}
+        <div className="mt-6 md:mt-0">
             <h4 className="mb-4 text-gray-400">SOCIAL</h4>
             <ul className="space-y-1">
-              <li>
-                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
-                  Facebook
-                </a>
-              </li>
+                <li>
+                    <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
+                        Instagram
+                    </a>
+                </li>
+                <li>
+                    <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
+                        Facebook
+                    </a>
+                </li>
             </ul>
-          </div>
         </div>
-      </footer>
+    </div>
+</footer>
       <div className="min-w-full mt-6 text-center">
         <MadeWithDyad />
       </div>
