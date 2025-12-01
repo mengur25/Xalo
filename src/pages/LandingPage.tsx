@@ -21,7 +21,7 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans">
-<header className='w-full bg-white py-6 px-4 md:px-8 flex justify-between items-center border-b border-gray-100 sticky top-0 z-50 relative'>
+      <header className='w-full bg-white py-6 px-4 md:px-8 flex justify-between items-center border-b border-gray-100 sticky top-0 z-50 relative'>
         {/* Logo */}
         <div className='flex items-center space-x-2'>
           <img src='logo-footer.png' alt='' className='w-16' />
@@ -98,57 +98,71 @@ const LandingPage = () => {
             DECODE YOUR <span className="text-[#9494FF]">IELTS DNA</span>
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 bg-[#F4F4FF] border border-b max-h-[600px]">
-            {/* Left Image Placeholder */}
-            <div className="bg-[#F4F4FF] h-[80%] md:col-span-8 flex items-center justify-center overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-12 bg-[#F4F4FF] **md:max-h-[600px]**">
+
+            {/* Left Image Placeholder (Thứ tự hiển thị 1 trên mobile) */}
+            <div className="bg-[#F4F4FF] **md:h-full** md:col-span-7 flex items-center justify-center overflow-hidden **order-2 md:order-1**">
               <span className="font-serif italic text-2xl text-white">
-                <img src="second.png" alt="" className="" />
+                <img src="second.png" alt="" className="w-full h-full object-contain" />
               </span>
             </div>
 
-            {/* Right Content */}
-            <div className="md:col-span-4 h-[50%] flex flex-col items-center justify-between bg-[#F4F4FF]">
+            {/* Right Content (Thứ tự hiển thị 2 trên mobile) */}
+            <div className="md:col-span-5 **md:h-full** flex flex-col items-center justify-between bg-[#F4F4FF] **order-1 md:order-2**">
+
               <div className="p-6 ">
-                <h2 className="text-4xl md:text-5xl font-bricolage leading-tight mb-6">
+                {/* Giảm kích thước font mặc định trên mobile, tăng lên từ sm: hoặc md: */}
+                <h2 className="text-4xl **sm:text-6xl** font-bricolage leading-tight mb-6">
                   giải mã gen học tập của riêng bạn - và cách “tái lập trình” để đạt band mục tiêu.
                 </h2>
               </div>
 
               <Button
                 onClick={handleStartQuiz}
-                className="w-[90%] bg-[#9494FF] hover:bg-[#8494FF]  text-white py-8 text-lg mb-16 font-bold uppercase tracking-wider rounded-sm shadow-lg hover:shadow-xl transition-all"
-                >
+                className="w-[90%] bg-[#9494FF] hover:bg-[#8494FF]  text-white py-8 text-lg mb-4 md:mb-16 font-bold uppercase tracking-wider rounded-sm shadow-lg hover:shadow-xl transition-all"
+              >
                 Bắt đầu
               </Button>
             </div>
           </div>
 
           {/* Sub-hero Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 min-h-[400px]">
-            <div className="bg-[#F4F4FF] p-8 h-100 flex flex-col justify-between transition-colors border-r">
-              <h3 className="text-5xl  leading-tight font-bricolage">
-                được thiết kế bởi đội ngũ chuyên gia ielts của xa lộ english
-              </h3>
-              <p className="text-md text-gray-500">
+          <div className="grid grid-cols-1 md:grid-cols-3 min-h-[400px] md:border-t">
+    
+    {/* Cột 1: Chuyên gia */}
+    <div className="bg-[#F4F4FF] p-8 **h-full** flex flex-col justify-between transition-colors lg:border-r md:border-b">
+        <h3 className="text-5xl leading-tight font-bricolage">
+            được thiết kế bởi đội ngũ chuyên gia ielts của xa lộ english
+        </h3>
+        {/* Thêm khoảng cách ở đây để đẩy paragraph xuống dưới */}
+        <div className="mt-8"> 
+             <p className="text-md text-gray-500">
                 Tìm "liều thuốc học" phù hợp nhất cho chính mình.
                 Bắt đầu ngay để không còn "học mãi mà không tiến".
-              </p>
-            </div>
-            <div className="bg-[#F4F4FF] p-8 h-100 flex flex-col justify-between transition-colors">
-              <h3 className="text-5xl  leading-tight font-bricolage">
-                bản phân tích cá nhân hóa của riêng bạn
-              </h3>
-              <p className="text-md text-gray-500">
+            </p>
+        </div>
+    </div>
+    
+    {/* Cột 2: Phân tích */}
+    <div className="bg-[#F4F4FF] p-8 **h-full** flex flex-col justify-between transition-colors **lg:border-r**">
+        <h3 className="text-5xl leading-tight font-bricolage">
+            bản phân tích cá nhân hóa của riêng bạn
+        </h3>
+        <div className="mt-8">
+            <p className="text-md text-gray-500">
                 Chẩn đoán trình độ học tập ngay tại nhà!
                 Bắt đầu hành trình "tái lập trình" IELTS của bạn.
-              </p>
-            </div>
-            <div className="bg-[#F4F4FF] h-full flex items-center justify-center relative overflow-hidden">
-              <span className="font-serif italic text-2xl text-white">
-                <img src="third.png" alt="" className="h-full" />
-              </span>
-            </div>
-          </div>
+            </p>
+        </div>
+    </div>
+    
+    {/* Cột 3: Hình ảnh */}
+    <div className="bg-[#F4F4FF] h-full flex items-center justify-center relative overflow-hidden">
+        <span className="font-serif italic text-2xl text-white">
+            <img src="third.png" alt="" className="**h-full w-full object-cover**" />
+        </span>
+    </div>
+</div>
         </div>
 
         {/* About Section */}
@@ -159,49 +173,57 @@ const LandingPage = () => {
               <span className="text-6xl md:text-8xl font-black text-[#9494FF] tracking-tighter font-bricolage">OUR QUIZ</span>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-10 gap-0 bg-[#F4F4FF] border-t border-b">
-              {/* Sidebar / List */}
-              <div className="md:col-span-3  max-h-[250px]">
+            <div className="grid **grid-cols-1** md:grid-cols-10 gap-0 bg-[#F4F4FF] border-t border-b">
+
+              <div className="md:col-span-3 **md:max-h-[750px]**">
+
+                {/* Tiêu đề chính */}
                 <div className="p-6 border-b border-gray-200">
                   <h3 className="text-6xl font-bricolage ">khía cạnh phân loại</h3>
                 </div>
 
-                <div className="p-6 border-b border-gray-200 min-h-[30%] transition-colors cursor-default group">
+                {/* Mục 1: KNOWLEDGE */}
+                <div className="p-6 border-b border-gray-200 **md:min-h-[30%]** transition-colors cursor-default group">
                   <h4 className="font-bold text-lg mb-2 flex items-center font-bricolage">
                     <Brain className="w-5 h-5 mr-2 text-blue-500" />
                     KNOWLEDGE (KIẾN THỨC)
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-md text-gray-600">
                     Mức độ hiểu biết về ngữ pháp, từ vựng, và các khả năng ngôn ngữ cũng như chiến lược, cách thức làm từng dạng bài trong từng kỹ năng riêng biệt.
                   </p>
                 </div>
 
-                <div className="p-6 border-b border-gray-200 min-h-[30%]  transition-colors cursor-default group">
+                {/* Mục 2: TEST-TAKING SKILLS */}
+                <div className="p-6 border-b border-gray-200 **md:min-h-[30%]** transition-colors cursor-default group">
                   <h4 className="font-bold text-lg mb-2 flex items-center">
-                    <Zap className="w-5 h-5 mr-2 text-yellow-500 font-bricolage" />
+                    <Zap className="w-5 h-5 mr-2 text-yellow-500" />
                     TEST-TAKING SKILLS (KỸ NĂNG LÀM BÀI THI)
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-md text-gray-600">
                     Kỹ năng quản lý thời gian, nhận biết dạng bài, và áp dụng kĩ thuật làm bài.
                   </p>
                 </div>
 
-                <div className="p-6  transition-colors min-h-[30%] cursor-default group">
+                {/* Mục 3: BEHAVIORAL PATTERNS */}
+                <div className="p-6 transition-colors **md:min-h-[30%]** cursor-default group">
                   <h4 className="font-bold text-lg mb-2 flex items-center font-bricolage">
                     <Heart className="w-5 h-5 mr-2 text-red-500" />
                     BEHAVIORAL PATTERNS (HÀNH VI)
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-md text-gray-600">
                     Thái độ, hành vi, tâm lý và phương pháp học tập.
                   </p>
                 </div>
               </div>
 
-              {/* Large Image Area */}
-              <div className="md:col-span-7 max-h-[900px] w-full flex items-center justify-center relative overflow-hidden">
-                <span className="font-serif italic text-6xl text-white">
-                  <img src="fouth.png" alt="" className="h-full w-full"/>
-                </span>
+              {/* Large Image Area (Trên màn hình MD trở lên: Chiếm 7/10 cột) */}
+              <div className="md:col-span-7 w-full flex items-center justify-center relative overflow-hidden **md:max-h-[750px]**">
+                {/* Loại bỏ span và áp dụng object-cover cho img */}
+                <img
+                  src="fouth.png"
+                  alt="Hình ảnh minh họa"
+                  className="h-full w-full **object-cover**"
+                />
               </div>
             </div>
           </div>
@@ -277,9 +299,9 @@ const LandingPage = () => {
           </div>
         </div>
       </footer>
-        <div className="min-w-full mt-6 text-center">
-          <MadeWithDyad />
-        </div>
+      <div className="min-w-full mt-6 text-center">
+        <MadeWithDyad />
+      </div>
     </div>
   );
 };
