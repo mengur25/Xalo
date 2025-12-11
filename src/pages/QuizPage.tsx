@@ -30,35 +30,35 @@ const QuizPage = () => {
   const [calculatedResult, setCalculatedResult] = useState<any>(null);
   const navigate = useNavigate();
 
-  // const skipToResults = async () => {
-  //   setSubmitting(true);
+    // const skipToResults = async () => {
+    //   setSubmitting(true);
 
-  //   // 1. Tạo một kết quả MOCK (Đảm bảo cấu trúc khớp với đầu ra của calculateScore)
-  //   const mockResult = {
-  //     // Điểm số ngẫu nhiên hoặc cố định để test
-  //     knowledgeScore: Math.random(), // 0.0 đến 1.0
-  //     skillsScore: Math.random(),
-  //     behaviorScore: Math.random(),
-  //     learningType: DEFAULT_LEARNER_TYPE_NAME, // Tên loại người học Mặc định
-  //     // Thêm các trường dữ liệu cần thiết khác mà trang /results sử dụng
-  //     recommendations: "Đây là kết quả giả lập để kiểm thử trang /results. Dữ liệu này KHÔNG được lưu vào Database.",
-  //     knowledgeLevel: Math.random() > 0.5 ? 'high' : 'low',
-  //     skillsLevel: Math.random() > 0.5 ? 'high' : 'low',
-  //     behavioralLevel: Math.random() > 0.5 ? 'high' : 'low',
-  //   };
+    //   // 1. Tạo một kết quả MOCK (Đảm bảo cấu trúc khớp với đầu ra của calculateScore)
+    //   const mockResult = {
+    //     // Điểm số ngẫu nhiên hoặc cố định để test
+    //     knowledgeScore: Math.random(), // 0.0 đến 1.0
+    //     skillsScore: Math.random(),
+    //     behaviorScore: Math.random(),
+    //     learningType: DEFAULT_LEARNER_TYPE_NAME, // Tên loại người học Mặc định
+    //     // Thêm các trường dữ liệu cần thiết khác mà trang /results sử dụng
+    //     recommendations: "Đây là kết quả giả lập để kiểm thử trang /results. Dữ liệu này KHÔNG được lưu vào Database.",
+    //     knowledgeLevel: Math.random() > 0.5 ? 'high' : 'low',
+    //     skillsLevel: Math.random() > 0.5 ? 'high' : 'low',
+    //     behavioralLevel: Math.random() > 0.5 ? 'high' : 'low',
+    //   };
 
-  //   try {
-  //     showSuccess("Đã bỏ qua Quiz. Xem kết quả giả lập!");
-  //   } catch (err) {
-  //     console.error("Unexpected error skipping quiz:", err);
-  //     showError("Có lỗi xảy ra trong quá trình tạo dữ liệu giả.");
-  //   } finally {
-  //     setSubmitting(false);
-  //     // Chuyển trang kết quả
-  //     setCalculatedResult(mockResult);
-  //     setShowResultReady(true);
-  //   }
-  // };
+    //   try {
+    //     showSuccess("Đã bỏ qua Quiz. Xem kết quả giả lập!");
+    //   } catch (err) {
+    //     console.error("Unexpected error skipping quiz:", err);
+    //     showError("Có lỗi xảy ra trong quá trình tạo dữ liệu giả.");
+    //   } finally {
+    //     setSubmitting(false);
+    //     // Chuyển trang kết quả
+    //     setCalculatedResult(mockResult);
+    //     setShowResultReady(true);
+    //   }
+    // };
 
   const fetchQuestions = useCallback(async () => {
     setLoading(true);
@@ -408,7 +408,7 @@ const QuizPage = () => {
               className="text-white border-red-500 bg-red-500 hover:bg-red-600 font-bold"
             >
               Skip (Test)
-            </Button>
+            </Button> */}
             <Button
               onClick={handlePreviousQuestion}
               disabled={currentQuestionIndex === 0}
