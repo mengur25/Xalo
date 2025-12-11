@@ -10,7 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { MadeWithDyad } from "@/components/made-with-dyad";
 import { showSuccess, showError } from "@/utils/toast";
 import { calculateScore } from "@/utils/quizLogic";
-import { QuizQuestion, QuizCategory, QuizOption } from "@/types";
+import { QuizQuestion, QuizCategory, QuizOption, LearningType } from "@/types";
+import { learnerProfiles } from "@/data/learnerTypes";
 
 interface OptionWithId extends QuizOption {
   id: string;
@@ -30,35 +31,35 @@ const QuizPage = () => {
   const [calculatedResult, setCalculatedResult] = useState<any>(null);
   const navigate = useNavigate();
 
-    // const skipToResults = async () => {
-    //   setSubmitting(true);
+  const skipToResults = async () => {
+    setSubmitting(true);
 
-    //   // 1. Tạo một kết quả MOCK (Đảm bảo cấu trúc khớp với đầu ra của calculateScore)
-    //   const mockResult = {
-    //     // Điểm số ngẫu nhiên hoặc cố định để test
-    //     knowledgeScore: Math.random(), // 0.0 đến 1.0
-    //     skillsScore: Math.random(),
-    //     behaviorScore: Math.random(),
-    //     learningType: DEFAULT_LEARNER_TYPE_NAME, // Tên loại người học Mặc định
-    //     // Thêm các trường dữ liệu cần thiết khác mà trang /results sử dụng
-    //     recommendations: "Đây là kết quả giả lập để kiểm thử trang /results. Dữ liệu này KHÔNG được lưu vào Database.",
-    //     knowledgeLevel: Math.random() > 0.5 ? 'high' : 'low',
-    //     skillsLevel: Math.random() > 0.5 ? 'high' : 'low',
-    //     behavioralLevel: Math.random() > 0.5 ? 'high' : 'low',
-    //   };
+    // 1. Tạo một kết quả MOCK (Đảm bảo cấu trúc khớp với đầu ra của calculateScore)
+    const mockResult = {
+      // Điểm số ngẫu nhiên hoặc cố định để test
+      knowledgeScore: Math.random(), // 0.0 đến 1.0
+      skillsScore: Math.random(),
+      behaviorScore: Math.random(),
+      learningType: DEFAULT_LEARNER_TYPE_NAME, // Tên loại người học Mặc định
+      // Thêm các trường dữ liệu cần thiết khác mà trang /results sử dụng
+      recommendations: "Đây là kết quả giả lập để kiểm thử trang /results. Dữ liệu này KHÔNG được lưu vào Database.",
+      knowledgeLevel: Math.random() > 0.5 ? 'high' : 'low',
+      skillsLevel: Math.random() > 0.5 ? 'high' : 'low',
+      behavioralLevel: Math.random() > 0.5 ? 'high' : 'low',
+    };
 
-    //   try {
-    //     showSuccess("Đã bỏ qua Quiz. Xem kết quả giả lập!");
-    //   } catch (err) {
-    //     console.error("Unexpected error skipping quiz:", err);
-    //     showError("Có lỗi xảy ra trong quá trình tạo dữ liệu giả.");
-    //   } finally {
-    //     setSubmitting(false);
-    //     // Chuyển trang kết quả
-    //     setCalculatedResult(mockResult);
-    //     setShowResultReady(true);
-    //   }
-    // };
+    try {
+      showSuccess("Đã bỏ qua Quiz. Xem kết quả giả lập!");
+    } catch (err) {
+      console.error("Unexpected error skipping quiz:", err);
+      showError("Có lỗi xảy ra trong quá trình tạo dữ liệu giả.");
+    } finally {
+      setSubmitting(false);
+      // Chuyển trang kết quả
+      setCalculatedResult(mockResult);
+      setShowResultReady(true);
+    }
+  };
 
   const fetchQuestions = useCallback(async () => {
     setLoading(true);
@@ -111,6 +112,220 @@ const QuizPage = () => {
 
   const handleOptionSelect = (questionId: string, optionIndex: number) => {
     setUserAnswers((prev) => ({ ...prev, [questionId]: optionIndex }));
+  };
+
+  // --- SCORING LOGIC CONSTANTS ---
+  const SCORING_CONFIG = {
+    knowledge: {
+      sub1: [1, 2, 3, 4, 7],
+      sub2: [5, 6],
+    },
+    skills: {
+      sub1: [8, 10, 12, 13],
+      sub2: [9, 11, 14, 15, 16],
+    },
+    behavior: {
+      sub1: [18, 20, 23],
+      sub2: [17, 19, 21, 22],
+    },
+  };
+
+  // Exact percentage points per answer index (0=A, 1=B, 2=C, 3=D)
+  // Based on Appendix 1
+  const SCORING_VALUES = {
+    k_sub1: [10, 20 / 3, 10 / 3, 0],       // Q: 1,2,3,4,7
+    k_sub2: [25, 50 / 3, 25 / 3, 0],       // Q: 5,6
+    s_sub1: [12.5, 25 / 3, 12.5 / 3, 0],   // Q: 8,10,12,13
+    s_sub2: [10, 20 / 3, 10 / 3, 0],       // Q: 9,11,14,15,16
+    b_sub1: [50 / 3, 100 / 9, 50 / 9, 0],  // Q: 18,20,23 (Act)
+    b_sub2: [12.5, 25 / 3, 12.5 / 3, 0],   // Q: 17,19,21,22 (React)
+  };
+
+  const getComboPrescription = (type: LearningType) => {
+    const comboMap: Record<LearningType, { healer: LearningType, fullPower: LearningType }> = {
+      'Multi-vitamins': { healer: 'Gummy Bear', fullPower: 'Multi-vitamins' },
+      'Vitamin C': { healer: 'Omega 3', fullPower: 'Multi-vitamins' },
+      'Caffeine Tablet': { healer: 'Sugar Pill', fullPower: 'Multi-vitamins' },
+      'Cough Syrup': { healer: 'Bee Pollen', fullPower: 'Multi-vitamins' },
+      'Omega 3': { healer: 'Vitamin C', fullPower: 'Multi-vitamins' },
+      'Sugar Pill': { healer: 'Caffeine Tablet', fullPower: 'Multi-vitamins' },
+      'Bee Pollen': { healer: 'Cough Syrup', fullPower: 'Multi-vitamins' },
+      'Gummy Bear': { healer: 'Multi-vitamins', fullPower: 'Multi-vitamins' },
+    };
+    return comboMap[type] || { healer: 'Multi-vitamins', fullPower: 'Multi-vitamins' };
+  };
+
+  // --- THÊM HẰNG SỐ NÀY VÀO TRÊN HÀM getDetailedStats ---
+  const DETAILED_STATS_MAP: Record<LearningType, import("@/types").DetailedStats> = {
+    // Dựa trên PHỤ LỤC 2: BẢNG PHÂN CHIA MỨC ĐỘ (chỉ cần các giá trị có trong bảng)
+    'Multi-vitamins': {
+      absorption: 0,
+      hiddenPotential: 0,
+      adaptation: 90, // Mức độ vận dụng chiến thuật
+      confusion: 0,
+      recovery: 0,
+      stress: 70, // Mức độ căng thẳng tiềm ẩn
+      supportNeeded: 0,
+      knowledgeOwnership: 90, // Mức độ sở hữu kiến thức
+      enthusiasm: 90, // Mức độ nhiệt huyết học tập
+    },
+    'Vitamin C': {
+      absorption: 40,
+      hiddenPotential: 0,
+      adaptation: 90,
+      confusion: 70, // Mức độ bối rối tiềm ẩn
+      recovery: 85, // Mức độ tự phục hồi
+      stress: 0,
+      supportNeeded: 0,
+      knowledgeOwnership: 0,
+      enthusiasm: 0,
+    },
+    'Caffeine Tablet': {
+      absorption: 0,
+      hiddenPotential: 80, // Mức độ chứa tiềm năng ẩn
+      adaptation: 0,
+      confusion: 70,
+      recovery: 0,
+      stress: 0,
+      supportNeeded: 0,
+      knowledgeOwnership: 80,
+      enthusiasm: 95,
+    },
+    'Cough Syrup': {
+      absorption: 0,
+      hiddenPotential: 0,
+      adaptation: 90,
+      confusion: 0,
+      recovery: 0,
+      stress: 0,
+      supportNeeded: 70, // Mức độ cần được hỗ trợ
+      knowledgeOwnership: 90,
+      enthusiasm: 50,
+    },
+    'Omega 3': {
+      absorption: 0,
+      hiddenPotential: 0,
+      adaptation: 40,
+      confusion: 0,
+      recovery: 0,
+      stress: 0,
+      supportNeeded: 70,
+      knowledgeOwnership: 90,
+      enthusiasm: 40,
+    },
+    'Sugar Pill': {
+      absorption: 40,
+      hiddenPotential: 0,
+      adaptation: 80,
+      confusion: 0,
+      recovery: 0,
+      stress: 70,
+      supportNeeded: 0,
+      knowledgeOwnership: 0,
+      enthusiasm: 40,
+    },
+    'Bee Pollen': {
+      absorption: 40,
+      hiddenPotential: 0,
+      adaptation: 40,
+      confusion: 0,
+      recovery: 0,
+      stress: 0,
+      supportNeeded: 70,
+      knowledgeOwnership: 0,
+      enthusiasm: 90,
+    },
+    'Gummy Bear': {
+      absorption: 40,
+      hiddenPotential: 70,
+      adaptation: 30,
+      confusion: 0,
+      recovery: 0,
+      stress: 0,
+      supportNeeded: 0,
+      knowledgeOwnership: 0,
+      enthusiasm: 30,
+    },
+  };
+
+  const getDetailedStats = (type: LearningType): import("@/types").DetailedStats => {
+    // Trả về dữ liệu từ bảng tra cứu, hoặc giá trị mặc định nếu không tìm thấy
+    return DETAILED_STATS_MAP[type] || {
+      absorption: 50, hiddenPotential: 50, adaptation: 50, confusion: 50,
+      recovery: 50, stress: 50, supportNeeded: 50, knowledgeOwnership: 50, enthusiasm: 50,
+    };
+  };
+
+  const calculateScore = (allQuestions: QuizQuestion[], answers: Record<string, number>) => {
+    let kScore = 0;
+    let sScore = 0;
+    let bScore = 0;
+
+    const questionOrderMap = new Map<string, number>();
+    allQuestions.forEach(q => questionOrderMap.set(q.id, q.question_order));
+
+    for (const questionId in answers) {
+      const ansIdx = answers[questionId];
+      if (ansIdx < 0 || ansIdx > 3) continue; // Safety check
+
+      const qNum = questionOrderMap.get(questionId);
+      if (qNum === undefined) continue;
+
+      // Knowledge
+      if (SCORING_CONFIG.knowledge.sub1.includes(qNum)) {
+        kScore += SCORING_VALUES.k_sub1[ansIdx];
+      } else if (SCORING_CONFIG.knowledge.sub2.includes(qNum)) {
+        kScore += SCORING_VALUES.k_sub2[ansIdx];
+      }
+
+      // Skills
+      else if (SCORING_CONFIG.skills.sub1.includes(qNum)) {
+        sScore += SCORING_VALUES.s_sub1[ansIdx];
+      } else if (SCORING_CONFIG.skills.sub2.includes(qNum)) {
+        sScore += SCORING_VALUES.s_sub2[ansIdx];
+      }
+
+      // Behavior
+      else if (SCORING_CONFIG.behavior.sub1.includes(qNum)) {
+        bScore += SCORING_VALUES.b_sub1[ansIdx];
+      } else if (SCORING_CONFIG.behavior.sub2.includes(qNum)) {
+        bScore += SCORING_VALUES.b_sub2[ansIdx];
+      }
+    }
+
+    // Determine H/L code (>= 50 is High)
+    const kCode = kScore >= 50 ? 'H' : 'L';
+    const sCode = sScore >= 50 ? 'H' : 'L';
+    const bCode = bScore >= 50 ? 'H' : 'L';
+    const resultCode = `${kCode}${sCode}${bCode}`;
+
+    // Find Profile
+    let learningType: LearningType = DEFAULT_LEARNER_TYPE_NAME as LearningType;
+    const profileEntry = Object.entries(learnerProfiles).find(
+      ([_, profile]) => profile.code === resultCode
+    );
+    if (profileEntry) {
+      learningType = profileEntry[0] as LearningType;
+    }
+
+    // Get Combo
+    const { healer, fullPower } = getComboPrescription(learningType);
+
+    // Normalize scores to 0-1 range for chart
+    const finalK = Math.min(Math.max(kScore / 100, 0), 1);
+    const finalS = Math.min(Math.max(sScore / 100, 0), 1);
+    const finalB = Math.min(Math.max(bScore / 100, 0), 1);
+
+    return {
+      knowledgeScore: finalK,
+      skillsScore: finalS,
+      behaviorScore: finalB,
+      learningType,
+      healer,
+      fullPower,
+      detailedStats: getDetailedStats(learningType),
+      recommendations: "",
+    };
   };
 
   const handleNextQuestion = () => {

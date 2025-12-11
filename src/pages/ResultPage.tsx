@@ -56,6 +56,22 @@ const ResultPage = () => {
     const skillsScore = Math.abs(rawSkillsScore);
     const behaviorScore = Math.abs(rawBehaviorScore);
 
+    // Logic Combo Helpers
+    const healerProfile = result.healer ? learnerProfiles[result.healer] : null;
+    const fullPowerProfile = result.fullPower ? learnerProfiles[result.fullPower] : null;
+
+    const DETAILED_STAT_NAMES = {
+        knowledgeOwnership: "Mức độ Sở hữu Kiến thức",
+        absorption: "Mức độ Hấp thụ Kiến thức",
+        hiddenPotential: "Mức độ Tiềm năng ẩn",
+        adaptation: "Mức độ Thích ứng Chiến thuật",
+        confusion: "Mức độ Bối rối Tiềm ẩn",
+        recovery: "Mức độ Tự phục hồi",
+        enthusiasm: "Mức độ Nhiệt huyết Học tập",
+        stress: "Mức độ Căng thẳng Tiềm ẩn",
+        supportNeeded: "Mức độ Cần được Hỗ trợ",
+    };
+
     const createCombinedChartData = (score: number) => {
         const val1 = Math.round(score * 55);
         const val2 = Math.round(score * 40);
@@ -350,6 +366,32 @@ const ResultPage = () => {
                                     <span className="font-mono font-bold text-sm uppercase bg-black text-white px-2 py-1 rotate-[-1deg]">BEHAVIOR</span>
                                 </div>
                             </div>
+
+                            {/* --- DETAILED STATS (New Section) --- */}
+                            {result.detailedStats && (
+                                <div className="mt-12 pt-6 border-t border-gray-300 relative z-10 w-full">
+                                    <h3 className="font-bold text-xl uppercase mb-6 text-center text-gray-800">
+                                        CHI TIẾT MỨC ĐỘ SỨC KHỎE
+                                    </h3>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-left">
+                                        {Object.entries(DETAILED_STAT_NAMES).map(([key, name]) => {
+                                            const value = result.detailedStats?.[key as keyof typeof result.detailedStats] || 0;
+                                            const color = value > 70 ? 'text-green-600' : value > 40 ? 'text-yellow-600' : 'text-red-600';
+                                            return (
+                                                <div key={key} className="flex justify-between items-center text-sm font-mono border-b border-dashed border-gray-300 pb-1">
+                                                    <span className="font-medium text-gray-600">{name}:</span>
+                                                    <span className={`font-black ${color}`}>{value}%</span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                    <div className="mt-8 text-center">
+                                        <p className="text-xs text-gray-400 italic">
+                                            *Các chỉ số được phân tích dựa trên hành vi trả lời và độ kiên định của bạn.
+                                        </p>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
 
@@ -366,7 +408,29 @@ const ResultPage = () => {
                                         <span className="text-3xl">💊</span> COMBO KÊ ĐƠN
                                     </h3>
                                     <div className="text-gray-800 leading-relaxed whitespace-pre-line font-medium">
-                                        {profile.combo}
+                                        {(healerProfile || fullPowerProfile) ? (
+                                            <>
+                                                {healerProfile && (
+                                                    <p className="mb-4">
+                                                        <span className="font-black text-lg">Bạn Đồng Hành "Chữa Lành":</span>
+                                                        <br />
+                                                        <span className="text-xl font-bold text-green-700">{healerProfile.name} ({healerProfile.code})</span>
+                                                    </p>
+                                                )}
+                                                {fullPowerProfile && (
+                                                    <p className="mb-4">
+                                                        <span className="font-black text-lg">Bạn Đồng Hành "Full Công Lực":</span>
+                                                        <br />
+                                                        <span className="text-xl font-bold text-green-700">{fullPowerProfile.name} ({fullPowerProfile.code})</span>
+                                                    </p>
+                                                )}
+                                                <div className="text-sm italic text-gray-600 border-t pt-2 mt-4">
+                                                    {profile.combo}
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <p>{profile.combo}</p>
+                                        )}
                                     </div>
                                     <div className="absolute bottom-4 right-4 opacity-50">
                                         <img src="doctorCombo.png" className="w-24 mix-blend-multiply grayscale" />

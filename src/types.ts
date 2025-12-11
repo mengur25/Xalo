@@ -19,7 +19,23 @@ export interface QuizResult {
   skillsScore: number;
   behaviorScore: number;
   learningType: LearningType;
+  healer?: LearningType;
+  fullPower?: LearningType;
+  detailedStats?: DetailedStats;
 }
+
+export interface DetailedStats {
+  absorption: number; // Mức độ hấp thụ kiến thức
+  hiddenPotential: number; // Mức độ chứa tiềm năng ẩn
+  adaptation: number; // Mức độ thích ứng chiến thuật
+  confusion: number; // Mức độ bối rối tiềm ẩn
+  recovery: number; // Mức độ tự phục hồi
+  stress: number; // Mức độ căng thẳng tiềm ẩn
+  supportNeeded: number; // Mức độ cần được hỗ trợ
+  knowledgeOwnership: number; // Mức độ sở hữu kiến thức
+  enthusiasm: number; // Mức độ nhiệt huyết học tập
+}
+
 
 export type LearningType =
   | 'Multi-vitamins'

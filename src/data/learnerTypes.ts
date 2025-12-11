@@ -23,7 +23,7 @@ export const learnerProfiles: Record<LearningType, LearnerProfile> = {
         description: 'Bạn là kiểu người học có sự phát triển về cả ba khía cạnh được đánh giá – vững vàng về kiến thức, linh hoạt trong kỹ năng và tích cực về thái độ. Bạn nắm chắc nền tảng ngôn ngữ, biết cách áp dụng vào bài thi, và có tinh thần học tập cao. Nhờ vậy, bạn có khả năng tiến xa và đạt mục tiêu cao nếu giữ được nhịp độ và sự tỉnh táo trong quá trình ôn luyện.\nỞ bạn toát lên một phong thái học thuật rõ rệt – sự nghiêm túc, tư duy phân tích, khả năng tổ chức việc học và định hướng dài hạn. Có thể bạn từng đảm nhận các vai trò như lớp trưởng, lớp phó học tập hoặc tham gia tích cực vào những hoạt động học thuật trong trường/lớp/ nơi công tác của bản thân.',
         image: 'Multi-vitamins.png',
         subtitle: '#AllRounder #ExamWarrior #HighAchiever',
-        combo: '- Bạn Đồng Hành "Chữa Lành": Bee Pollen\n- Bạn Đồng Hành "Full Công Lực": Multi-vitamins',
+        combo: '- Bạn Đồng Hành "Chữa Lành": Gummy Bear\n- Bạn Đồng Hành "Full Công Lực": Multi-vitamins',
         ingredients: {
             knowledge:
                 'Bạn có nền tảng ngôn ngữ vững chắc – vốn từ, ngữ pháp và khả năng hiểu cấu trúc câu đủ để xử lý nhiều dạng bài phức tạp. Bạn không chỉ học từ sách giáo khoa mà còn mở rộng kiến thức thông qua tài liệu học thuật, video, podcast, và các cuộc hội thoại thực tế.',
@@ -43,7 +43,7 @@ export const learnerProfiles: Record<LearningType, LearnerProfile> = {
         description: 'Bạn thuộc nhóm người học cần sự hỗ trợ ở cả ba khía cạnh: kiến thức nền, kỹ năng làm bài và thái độ học tập. Ở một số trường hợp, bạn đang ở những bước đầu tiên trong hành trình học tiếng Anh – mọi thứ còn mới mẻ, đôi lúc mơ hồ, nhưng điều quan trọng là bạn đã bắt đầu. Ở những trường hợp khác, bạn đã học một thời gian, từng thử nhiều cách, nhưng vẫn chưa thể nhìn thấy kết quả rõ rệt. Việc này dễ khiến bạn dễ hoang mang, nghi ngờ chính mình hoặc mất phương hướng. Lúc này, bạn cần gỡ rối lại nền tảng cũ, được định hướng lại một cụ thể và phù hợp với nhịp học của bạn.',
         image: 'Gummy Bear.png',
         subtitle: '#FishOutOfWater #FreshOnTheTrack  #HandleWithCare',
-        combo: '- Bạn Đồng Hành "Full Công Lực": Multi-vitamins',
+        combo: '- Bạn Đồng Hành "Chữa Lành": Multi-vitamins\n- Bạn Đồng Hành "Full Công Lực": Multi-vitamins',
 
         ingredients: {
             knowledge:
@@ -145,7 +145,7 @@ export const learnerProfiles: Record<LearningType, LearnerProfile> = {
         description: 'Bạn biết cách tận dụng nguồn lực, sắp xếp chiến thuật, và xử lý đề thi một cách hiệu quả. Tuy nhiên, giống như một viên kẹo ngọt – thứ mang lại tác dụng đôi khi nhờ niềm tin hơn là hoạt chất thật sự – cách học của bạn có thể chưa chạm đến chiều sâu. Khi thử thách tăng lên, bạn sẽ cần một hướng đi bền hơn để phát triển tiếp.',
         image: 'Sugar Pill.png',
         subtitle: '#SweetAndSnappy #TheInstantLearner #CatchMeStudying',
-        combo: 'Bạn Đồng Hành "Chữa Lành": Caffein Tablet\n- Bạn Đồng Hành "Full Công Lực": Multi-vitamins',
+        combo: '- Bạn Đồng Hành "Chữa Lành": Caffein Tablet\n- Bạn Đồng Hành "Full Công Lực": Multi-vitamins',
         ingredients: {
             knowledge:
                 'Bạn đã tiếp cận nhiều mẹo học và chiến thuật thông minh, giúp bạn đạt được kết quả tốt trong các dạng bài quen thuộc. Tuy nhiên, phần lớn những gì bạn biết hiện nay chủ yếu phục vụ cho việc xử lý đề thi — như đoán từ khóa, loại trừ đáp án, nhận diện bẫy — thay vì bắt nguồn từ sự hiểu sâu về ngôn ngữ. Điều này khiến kiến thức bạn nhận được có thể hiệu quả trong phòng thi, nhưng ít được chuyển hóa sang các tình huống như viết văn bản học thuật, diễn đạt ý phức tạp, hoặc giao tiếp thực tế. Nếu được củng cố thêm nền tảng – từ từ vựng học thuật, ngữ pháp chuyên sâu đến cách phát triển ý mạch lạc – bạn sẽ phát huy mạnh mẽ hơn, không chỉ thi tốt mà còn học tốt, dùng tốt.',

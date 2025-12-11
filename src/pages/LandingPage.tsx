@@ -156,7 +156,7 @@ const LandingPage = () => {
             </div>
 
             <div className="max-w-4xl mx-auto z-10 relative pt-8 md:pt-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 font-bricolage leading-tight text-gray-700">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-bricolage leading-tight text-gray-700">
                 “It’s so incredible to finally be understood.”
               </h2>
               <p className="text-lg md:text-xl mb-10 opacity-90 max-w-2xl mx-auto text-gray-400">
