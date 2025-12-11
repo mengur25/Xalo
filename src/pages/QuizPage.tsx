@@ -249,7 +249,7 @@ const QuizPage = () => {
                 </span>
                 <h3 className="font-bold text-xl mb-4 text-gray-900">Xem kết quả chi tiết</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  đọc phân tích chân dung học tập của bạn bao gồm mô tả chung, mô tả chi tiết theo từng khía cạnh phân loại, các khó khăn đang kiềm hãm tiềm năng học tập, người bạn đồng hành và phương pháp học được gợi ý bởi Xa Lộ English
+                  Đọc phân tích chân dung học tập của bạn bao gồm mô tả chung, mô tả chi tiết theo từng khía cạnh phân loại, các khó khăn đang kiềm hãm tiềm năng học tập, người bạn đồng hành và phương pháp học được gợi ý bởi Xa Lộ English.
                 </p>
               </div>
             </div>
@@ -267,7 +267,7 @@ const QuizPage = () => {
                 </span>
                 <h3 className="font-bold text-xl mb-4 text-gray-900">Tìm hiểu giải pháp</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Tìm hiểu về phương pháp học tập phù hợp và nghiên cứu nguồn tài nguyên học tập mà Xa Lộ English gợi ý riêng dành cho bạn
+                  Tìm hiểu về phương pháp học tập phù hợp và nghiên cứu nguồn tài nguyên học tập mà Xa Lộ English gợi ý riêng dành cho bạn.
                 </p>
               </div>
             </div>
@@ -408,7 +408,7 @@ const QuizPage = () => {
               className="text-white border-red-500 bg-red-500 hover:bg-red-600 font-bold"
             >
               Skip (Test)
-            </Button> */}
+            </Button>
             <Button
               onClick={handlePreviousQuestion}
               disabled={currentQuestionIndex === 0}
