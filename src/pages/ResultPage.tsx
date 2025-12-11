@@ -414,14 +414,14 @@ const ResultPage = () => {
                                                     <p className="mb-4">
                                                         <span className="font-black text-lg">Bạn Đồng Hành "Chữa Lành":</span>
                                                         <br />
-                                                        <span className="text-xl font-bold text-green-700">{healerProfile.name} ({healerProfile.code})</span>
+                                                        <span className="text-xl font-bold text-green-700">{healerProfile.name}</span>
                                                     </p>
                                                 )}
                                                 {fullPowerProfile && (
                                                     <p className="mb-4">
                                                         <span className="font-black text-lg">Bạn Đồng Hành "Full Công Lực":</span>
                                                         <br />
-                                                        <span className="text-xl font-bold text-green-700">{fullPowerProfile.name} ({fullPowerProfile.code})</span>
+                                                        <span className="text-xl font-bold text-green-700">{fullPowerProfile.name} </span>
                                                     </p>
                                                 )}
                                                 <div className="text-sm italic text-gray-600 border-t pt-2 mt-4">
