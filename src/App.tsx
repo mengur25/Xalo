@@ -9,6 +9,8 @@ import ResultPage from "./pages/ResultPage"; // Import ResultPage
 import NotFound from "./pages/NotFound";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLoginPage from "./pages/AdminLoginPage";
+import LearnerTypeDetailPage from "./pages/LearnerTypeDetailPage"; // Import LearnerTypeDetailPage
+
 
 const queryClient = new QueryClient();
 
@@ -22,7 +24,8 @@ const App = () => (
           <Route path="/" element={<LandingPage />} />
           <Route path="/quiz" element={<QuizPage />} /> {/* Sử dụng QuizPage */}
           <Route path="/results" element={<ResultPage />} /> {/* Add ResultPage route */}
-          <Route path="/admin/login" element={<AdminLoginPage/>}/>
+          <Route path="/types/:typeId" element={<LearnerTypeDetailPage />} /> {/* Add LearnerTypeDetailPage route */}
+          <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route path="/admin" element={<AdminDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

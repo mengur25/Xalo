@@ -4,7 +4,10 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { MadeWithDyad } from "@/components/made-with-dyad";
-import { ArrowRight, Dna, Pill, Brain, Zap, Heart, X, Menu } from "lucide-react";
+import { ArrowRight, Dna, Pill, X, Menu } from "lucide-react";
+import LearnerCardCarousel from "@/components/LearnerCardCarousel";
+import AboutSection from "@/components/AboutSection";
+
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -98,162 +101,150 @@ const LandingPage = () => {
             DECODE YOUR <span className="text-[#9494FF]">IELTS DNA</span>
           </h1>
 
-<div className="grid grid-cols-1 lg:grid-cols-12 bg-[#F4F4FF] lg:max-h-[600px]">
-    
-    {/* Left Image Placeholder */}
-    {/* Áp dụng col-span và order từ LG trở lên */}
-    <div className="bg-[#F4F4FF] lg:h-full lg:col-span-8 flex items-center justify-start overflow-hidden order-2 lg:order-1">
-        <img src="second.png" alt="" className="w-full h-full object-contain" />
-    </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 bg-[#F4F4FF] lg:max-h-[600px]">
 
-    {/* Right Content */}
-    {/* Áp dụng col-span và order từ LG trở lên */}
-    <div className="lg:col-span-4 lg:h-full flex flex-col items-center justify-center bg-[#F4F4FF] order-1 lg:order-2">
+            {/* Left Image Placeholder */}
+            <div className="bg-[#F4F4FF] lg:h-full lg:col-span-8 flex items-center justify-start overflow-hidden order-2 lg:order-1">
+              <img src="second.png" alt="" className="w-full h-full object-contain" />
+            </div>
 
-      <div className="p-6 py-8 flex flex-col items-center">
-        
-        {/* Điều chỉnh font-size để tránh tràn chữ trên mobile/tablet */}
-        <h2 className="text-4xl lg:text-5xl font-bricolage leading-tight mb-6">
-          giải mã gen học tập của riêng bạn - và cách “tái lập trình” để đạt band mục tiêu.
-        </h2>
+            {/* Right Content */}
+            <div className="lg:col-span-4 lg:h-full flex flex-col items-center justify-center bg-[#F4F4FF] order-1 lg:order-2">
 
-        <Button
-          onClick={handleStartQuiz}
-          className="w-[90%] bg-[#9494FF] hover:bg-[#8494FF] text-white py-8 text-lg mt-16 font-bold uppercase tracking-wider rounded-sm shadow-lg hover:shadow-xl transition-all"
-        >
-          Bắt đầu
-        </Button>
-      </div>
+              <div className="p-6 py-8 flex flex-col items-center">
 
-    </div>
-</div>
+                {/* Điều chỉnh font-size để tránh tràn chữ trên mobile/tablet */}
+                <h2 className="text-4xl lg:text-5xl font-bricolage leading-tight mb-6">
+                  giải mã gen học IELTS
+                </h2>
+
+                <p>Chỉ trong 15 phút, bạn sẽ thấy rõ bản thân mình trên hành trình học IELTS và nhận lộ trình học hiệu quả nhất để đạt mục tiêu.</p>
+
+                <Button
+                  onClick={handleStartQuiz}
+                  className="w-[90%] bg-[#9494FF] hover:bg-[#8494FF] text-white py-8 text-lg mt-16 font-bold uppercase tracking-wider rounded-sm shadow-lg hover:shadow-xl transition-all"
+                >
+                  DECODE my IELTS DNA now!
+                </Button>
+              </div>
+
+            </div>
+          </div>
+
+
+          {/* Quote / Testimonial Section (Ref 3) */}
+          <div className="w-full bg-[#F4F4FF] text-white py-20 px-4 text-center relative overflow-hidden">
+
+            {/* SVG Top Edge */}
+            <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
+              <svg
+                className="relative block w-[calc(100%+1.3px)] h-[50px] md:h-[110px]"
+                preserveAspectRatio="none"
+                width="1920"
+                height="110"
+                viewBox="0 0 1920 110"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="m520 90 900-90 500 110V0H0z"
+                  fill="#FFF"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
+
+            <div className="max-w-4xl mx-auto z-10 relative pt-8 md:pt-12">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 font-bricolage leading-tight text-gray-700">
+                “It’s so incredible to finally be understood.”
+              </h2>
+              <p className="text-lg md:text-xl mb-10 opacity-90 max-w-2xl mx-auto text-gray-400">
+                Only 10 minutes to get a “freakishly accurate” description of who you are and why you do things the way you do.
+              </p>
+              <Button
+                onClick={handleStartQuiz}
+                className="bg-[#9494FF] hover:bg-[#8494FF]text-white font-bold py-4 px-8 rounded-full text-lg uppercase tracking-wider shadow-lg transition-transform hover:scale-105"
+              >
+                DECODE my IELTS DNA now!
+              </Button>
+            </div>
+          </div>
 
           {/* Sub-hero Grid */}
-<div className="grid grid-cols-1 lg:grid-cols-3 min-h-[400px] lg:border-t">
+          <div className="grid grid-cols-2 min-h-[400px] lg:border-t">
 
-    {/* Cột 1: Chuyên gia */}
-    <div className="bg-[#F4F4FF] p-8 h-full flex flex-col justify-between transition-colors lg:border-r **lg:border-b**">
-        <h3 className="text-5xl leading-tight font-bricolage">
-            được thiết kế bởi đội ngũ chuyên gia ielts của xa lộ english
-        </h3>
-        <div className="mt-8">
-            {/* Giảm font size mặc định và tăng trên màn hình lớn */}
-            <p className="text-md lg:text-2xl text-gray-500">
-                Tìm "liều thuốc học" phù hợp nhất cho chính mình.
-                Bắt đầu ngay để không còn "học mãi mà không tiến".
-            </p>
-        </div>
-    </div>
+            {/* Cột 1: Chuyên gia */}
+            <div className="bg-[#F4F4FF] p-8 h-full flex flex-col justify-between transition-colors lg:border-r **lg:border-b**">
+              <h3 className="text-5xl leading-tight font-bricolage">
+                “Chẩn” để thấy rõ bản thân trên hành trình học IELTS
+              </h3>
+              <div className="mt-8">
+                {/* Giảm font size mặc định và tăng trên màn hình lớn */}
+                <p className="text-md lg:text-2xl text-gray-500">
+                  Decode your IELTS DNA tại Xa Lộ English là một công cụ được phát triển dành cho tất cả người học IELTS,
+                  giúp bạn tự khám phá điểm mạnh, điểm yếu và hiểu rõ phong cách học tập của chính mình.
+                </p>
+              </div>
+            </div>
 
-    {/* Cột 2: Phân tích */}
-    <div className="bg-[#F4F4FF] p-8 h-full flex flex-col justify-between transition-colors lg:border-r">
-        <h3 className="text-5xl leading-tight font-bricolage">
-            bản phân tích cá nhân hóa của riêng bạn
-        </h3>
-        <div className="mt-8">
-            <p className="text-md lg:text-2xl text-gray-500">
-                Chẩn đoán trình độ học tập ngay tại nhà!
-                Bắt đầu hành trình "tái lập trình" IELTS của bạn.
-            </p>
-        </div>
-    </div>
+            {/* Cột 2: Phân tích */}
+            <div className="bg-[#F4F4FF] p-8 h-full flex flex-col justify-between transition-colors lg:border-r">
+              <h3 className="text-5xl leading-tight font-bricolage">
+                “Chữa” bằng lộ trình học tập hiệu quả nhất”
+              </h3>
+              <div className="mt-8">
+                <p className="text-md lg:text-2xl text-gray-500">
+                  Không chỉ nhận được mô tả chi tiết về phong cách học tập, Xa Lộ English còn cung cấp tài nguyên học tập được đội ngũ giáo viên phát triển,
+                  giúp bạn phát huy tối đa điểm mạnh, cải thiện điểm yếu, và áp dụng phương pháp phù hợp nhất, giúp việc học hiệu quả hơn, tránh lạc lối theo các phương pháp đại trà.
+                </p>
+              </div>
+            </div>
 
-    {/* Cột 3: Hình ảnh */}
-    <div className="bg-[#F4F4FF] h-full flex items-center justify-center relative overflow-hidden">
-        <span className="font-serif italic text-2xl text-white">
-            <img src="third.png" alt="" className="h-full w-full object-cover" />
-        </span>
-    </div>
-</div>
+
+          </div>
         </div>
 
         {/* About Section */}
-        <div className="w-full border-t border-black min-h-[250px]">
-          <div className="max-w-full mx-auto min-h-full">
-            <div className="flex items-baseline mt-6 mb-2">
-              <span className="font-serif italic text-6xl md:text-4xl sm:text-2xl mr-4 ms-4">ABOUT</span>
-              <span className=" text-8xl md:text-6xl sm:text-4xl font-black text-[#9494FF] tracking-tighter font-bricolage">OUR QUIZ</span>
-            </div>
-
-            <div className="grid **grid-cols-1** md:grid-cols-10 gap-0 bg-[#F4F4FF] border-t border-b">
-
-              <div className="md:col-span-3 **md:max-h-[750px]**">
-
-                {/* Tiêu đề chính */}
-                <div className="p-6 border-b border-gray-200">
-                  <h3 className="text-6xl font-bricolage ">khía cạnh phân loại</h3>
-                </div>
-
-                {/* Mục 1: KNOWLEDGE */}
-                <div className="p-6 border-b border-gray-200 **md:min-h-[30%]** transition-colors cursor-default group">
-                  <h4 className="font-bold text-lg mb-2 flex items-center font-bricolage">
-                    <Brain className="w-5 h-5 mr-2 text-blue-500" />
-                    KNOWLEDGE (KIẾN THỨC)
-                  </h4>
-                  <p className="text-md text-gray-600">
-                    Mức độ hiểu biết về ngữ pháp, từ vựng, và các khả năng ngôn ngữ cũng như chiến lược, cách thức làm từng dạng bài trong từng kỹ năng riêng biệt.
-                  </p>
-                </div>
-
-                {/* Mục 2: TEST-TAKING SKILLS */}
-                <div className="p-6 border-b border-gray-200 **md:min-h-[30%]** transition-colors cursor-default group">
-                  <h4 className="font-bold text-lg mb-2 flex items-center">
-                    <Zap className="w-5 h-5 mr-2 text-yellow-500" />
-                    TEST-TAKING SKILLS (KỸ NĂNG LÀM BÀI THI)
-                  </h4>
-                  <p className="text-md text-gray-600">
-                    Kỹ năng quản lý thời gian, nhận biết dạng bài, và áp dụng kĩ thuật làm bài.
-                  </p>
-                </div>
-
-                {/* Mục 3: BEHAVIORAL PATTERNS */}
-                <div className="p-6 transition-colors **md:min-h-[30%]** cursor-default group">
-                  <h4 className="font-bold text-lg mb-2 flex items-center font-bricolage">
-                    <Heart className="w-5 h-5 mr-2 text-red-500" />
-                    BEHAVIORAL PATTERNS (HÀNH VI)
-                  </h4>
-                  <p className="text-md text-gray-600">
-                    Thái độ, hành vi, tâm lý và phương pháp học tập.
-                  </p>
-                </div>
-              </div>
-
-              {/* Large Image Area (Trên màn hình MD trở lên: Chiếm 7/10 cột) */}
-              <div className="md:col-span-7 w-full flex items-center justify-center relative overflow-hidden **md:max-h-[750px]**">
-                {/* Loại bỏ span và áp dụng object-cover cho img */}
-                <img
-                  src="fouth.png"
-                  alt="Hình ảnh minh họa"
-                  className="h-full w-full **object-cover**"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        <AboutSection />
 
         {/* Call to Action / Formulas */}
         <div className="bg-[#808CFD] text-white py-20 text-center">
           <p className="text-xs font-bold tracking-widest uppercase mb-4">YOUR IELTS DNA</p>
           <h2 className="font-bricolage text-black text-5xl md:text-6xl mb-8 ">meet the fomulas</h2>
-          <Button
-            onClick={handleStartQuiz}
-            className="bg-white text-black hover:bg-gray-100 font-bold py-3 px-8 rounded-sm uppercase tracking-wider mb-12"
-          >
-            Bắt đầu
-          </Button>
 
-          {/* Cards Placeholder */}
-          <div className="flex justify-center items-center space-x-4 px-4 overflow-hidden">
-            <div className="w-48 h-82 bg-white rounded-xl transform -rotate-6 border-4 border-black">
-              <img src="1.png" alt="" />
-            </div>
-            <div className="w-56 h-86 bg-white rounded-xl z-10 border-4 border-black">
-              <img src="2.png" alt="" />
-            </div>
-            <div className="w-48 h-82 bg-white rounded-xl transform rotate-6 border-4 border-black">
-              <img src="3.png" alt="" />
-            </div>
+
+          <p className="text-xs font-bold tracking-widest uppercase mb-16 ">
+            đọc và nghiên cứu chi tiết về tám loại người học bao gồm mô tả chung, <br /> mô tả chi tiết theo từng khía cạnh phân loại, các khó khăn đang kiềm hãm tiềm năng học tập, <br />
+            người bạn đồng hành và phương pháp học được gợi ý bởi Xa Lộ English
+          </p>
+
+          {/* Cards Placeholder replaced with Carousel */}
+          <LearnerCardCarousel />
+
+
+
+
+        </div>
+
+        {/* Gradient CTA Section */}
+        <div className="max-w-full mb-8 mt-8 bg-gradient-to-r from-[#FF8C9E] to-[#808CFD] rounded-[3rem] p-12 md:p-20 text-white flex flex-col items-start text-left relative overflow-hidden shadow-2xl mx-4">
+          <div className="z-10 relative md:w-3/4">
+            <h2 className="text-4xl md:text-6xl font-bold font-bricolage mb-6 leading-tight">
+              vậy… gen học IELTS của bạn là gì?
+            </h2>
+            <p className="text-lg md:text-2xl font-medium opacity-95 mb-12 leading-relaxed font-sans">
+              Hãy cùng Xa Lộ English "giải mã" bản thân để biết mình đang ở đâu và cần làm gì để chinh phục mục tiêu IELTS mơ ước nhé!
+            </p>
+            <Button
+              onClick={handleStartQuiz}
+              className="bg-white text-[#808CFD] hover:bg-gray-50 font-bold py-8 px-10 rounded-full text-lg md:text-xl uppercase tracking-widest shadow-lg transition-transform hover:scale-105"
+            >
+              DECODE my IELTS DNA now!
+            </Button>
           </div>
+          {/* Decorative Overlay to mimic stripes/fade if needed, kept simple for now */}
+          <div className="absolute right-0 top-0 h-full w-1/3 bg-white/10 skew-x-12 transform origin-bottom translate-x-1/2 blur-3xl"></div>
         </div>
       </main>
 

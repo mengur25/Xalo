@@ -16,6 +16,7 @@ interface OptionWithId extends QuizOption {
   id: string;
 }
 
+const DEFAULT_LEARNER_TYPE_NAME = "Multi-vitamins";
 
 const QuizPage = () => {
   // Đã sửa QuizQuestion[] thành Question[] để đồng bộ với định nghĩa Interface
@@ -29,6 +30,35 @@ const QuizPage = () => {
   const [calculatedResult, setCalculatedResult] = useState<any>(null);
   const navigate = useNavigate();
 
+  // const skipToResults = async () => {
+  //   setSubmitting(true);
+
+  //   // 1. Tạo một kết quả MOCK (Đảm bảo cấu trúc khớp với đầu ra của calculateScore)
+  //   const mockResult = {
+  //     // Điểm số ngẫu nhiên hoặc cố định để test
+  //     knowledgeScore: Math.random(), // 0.0 đến 1.0
+  //     skillsScore: Math.random(),
+  //     behaviorScore: Math.random(),
+  //     learningType: DEFAULT_LEARNER_TYPE_NAME, // Tên loại người học Mặc định
+  //     // Thêm các trường dữ liệu cần thiết khác mà trang /results sử dụng
+  //     recommendations: "Đây là kết quả giả lập để kiểm thử trang /results. Dữ liệu này KHÔNG được lưu vào Database.",
+  //     knowledgeLevel: Math.random() > 0.5 ? 'high' : 'low',
+  //     skillsLevel: Math.random() > 0.5 ? 'high' : 'low',
+  //     behavioralLevel: Math.random() > 0.5 ? 'high' : 'low',
+  //   };
+
+  //   try {
+  //     showSuccess("Đã bỏ qua Quiz. Xem kết quả giả lập!");
+  //   } catch (err) {
+  //     console.error("Unexpected error skipping quiz:", err);
+  //     showError("Có lỗi xảy ra trong quá trình tạo dữ liệu giả.");
+  //   } finally {
+  //     setSubmitting(false);
+  //     // Chuyển trang kết quả
+  //     setCalculatedResult(mockResult);
+  //     setShowResultReady(true);
+  //   }
+  // };
 
   const fetchQuestions = useCallback(async () => {
     setLoading(true);
@@ -155,6 +185,11 @@ const QuizPage = () => {
   };
 
   // --- RENDERING ---
+  // State for Introduction Page
+  const [showIntro, setShowIntro] = useState(true);
+
+
+  // --- RENDERING ---
   const currentQuestion = questions[currentQuestionIndex];
 
   const handlePreviousQuestion = () => {
@@ -163,32 +198,108 @@ const QuizPage = () => {
     }
   };
 
-  if (loading) {
+  const handleStartQuiz = () => {
+    setShowIntro(false);
+  };
+
+  // INTRO PAGE (Thay thế trang loading)
+  if (showIntro) {
     return (
-      <div className="min-h-screen flex flex-col bg-[#8B9DFF] font-sans text-black">
-        <div className="flex-grow flex flex-col items-center justify-center p-4 text-center">
-          <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-none">
+      <div className="min-h-screen flex flex-col bg-[#808CFD] font-sans text-gray-800 ">
+
+        <div className="flex-grow flex flex-col items-center justify-center p-4 py-12 text-center max-w-6xl mx-auto w-full">
+          <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-16 leading-none text-black">
             WELCOME TO OUR QUIZ
           </h1>
+          <p className="mb-6 text-sm font-bold text-white max-w-lg mx-auto">Hãy thật lòng trả lời câu hỏi dựa trên trải nghiệm thực sự của bạn khi học IELTS. Đừng để định kiến cá nhân ảnh hưởng - chỉ cần chọn điều phản ánh đúng bạn nhất.</p>
 
-          <p className="text-base md:text-lg mb-12 max-w-2xl font-medium leading-relaxed">
-            Hãy trả lời thật lòng dựa trên những gì bạn có thể quan sát hoặc được đánh giá.
-            <br className="hidden md:block" />
-            Đừng để định kiến cá nhân ảnh hưởng — chỉ cần chọn điều phản ánh đúng bạn nhất.
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 w-full px-4 mt-12">
 
-          <div className="bg-black text-white px-8 py-3 rounded-full flex items-center space-x-3 shadow-lg">
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-            <span className="font-bold text-lg lowercase">loading</span>
+            {/* Step 1 - Blue */}
+            <div className="bg-white p-8 rounded-lg shadow-lg border-t-8 border-blue-400 text-left flex flex-col h-full relative">
+              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                {/* Icon Placeholder */}
+                <div className="text-blue-400 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm">
+
+                  <span className="text-4xl">📝</span>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <span className="inline-block bg-blue-100 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-4">
+                  STEP 1
+                </span>
+                <h3 className="font-bold text-xl mb-4 text-gray-900">Hoàn thành bài Test</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Trả lời thật lòng dựa trên trải nghiệm thực sự của bạn khi học IELTS. Đừng nghĩ quá nhiều về tính logic và tính đúng sai của đáp án.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 - Green */}
+            <div className="bg-white p-8 rounded-lg shadow-lg border-t-8 border-green-400 text-left flex flex-col h-full relative">
+              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                <div className="text-green-400 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm">
+                  <span className="text-4xl">📊</span>
+                </div>
+              </div>
+              <div className="mt-8">
+                <span className="inline-block bg-green-100 text-green-600 text-xs font-bold px-3 py-1 rounded-full mb-4">
+                  STEP 2
+                </span>
+                <h3 className="font-bold text-xl mb-4 text-gray-900">Xem kết quả chi tiết</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  đọc phân tích chân dung học tập của bạn bao gồm mô tả chung, mô tả chi tiết theo từng khía cạnh phân loại, các khó khăn đang kiềm hãm tiềm năng học tập, người bạn đồng hành và phương pháp học được gợi ý bởi Xa Lộ English
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 - Purple */}
+            <div className="bg-white p-8 rounded-lg shadow-lg border-t-8 border-purple-400 text-left flex flex-col h-full relative">
+              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                <div className="text-purple-400 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm">
+                  <span className="text-4xl">🚀</span>
+                </div>
+              </div>
+              <div className="mt-8">
+                <span className="inline-block bg-purple-100 text-purple-600 text-xs font-bold px-3 py-1 rounded-full mb-4">
+                  STEP 3
+                </span>
+                <h3 className="font-bold text-xl mb-4 text-gray-900">Tìm hiểu giải pháp</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Tìm hiểu về phương pháp học tập phù hợp và nghiên cứu nguồn tài nguyên học tập mà Xa Lộ English gợi ý riêng dành cho bạn
+                </p>
+              </div>
+            </div>
+
           </div>
+
+          <Button
+            onClick={handleStartQuiz}
+            disabled={loading} // Disable if still fetching questions
+            className="bg-black hover:bg-gray-500 !w-[400px] text-white font-bold py-6 px-16 rounded shadow-xl text-xl uppercase transition-transform transform hover:scale-105"
+          >
+            {loading ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                LOADING...
+              </>
+            ) : (
+              "BẮT ĐẦU"
+            )}
+          </Button>
+          <p className="mt-6 text-sm font-bold text-white max-w-lg mx-auto">
+            *Bài test sẽ mất khoảng 5 phút. Hãy đảm bảo bạn có không gian yên tĩnh và tâm lý thoải mái nhất.
+          </p>
         </div>
 
-        <div className="bg-white py-4">
+        <div className="bg-white py-4 w-full border-t border-gray-100">
           <MadeWithDyad />
         </div>
       </div>
     );
   }
+
 
   if (showResultReady) {
     return (
@@ -290,6 +401,14 @@ const QuizPage = () => {
             </RadioGroup>
           </CardContent>
           <CardFooter className="bg-gray-50 p-6 flex justify-between border-t border-gray-100">
+            {/* <Button
+              onClick={skipToResults} // Gọi hàm đã được đơn giản hóa
+              disabled={submitting}
+              variant="outline"
+              className="text-white border-red-500 bg-red-500 hover:bg-red-600 font-bold"
+            >
+              Skip (Test)
+            </Button> */}
             <Button
               onClick={handlePreviousQuestion}
               disabled={currentQuestionIndex === 0}

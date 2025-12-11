@@ -130,315 +130,302 @@ const ResultPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#F3F4F6] font-sans text-black">
-            <div ref={resultRef} className="bg-[#F3F4F6]">
-                <header className="w-full bg-white py-6 px-4 md:px-8 flex justify-between items-center border-b border-gray-100 sticky top-0 z-50 relative">
+        <div className="min-h-screen bg-stone-900 font-sans text-black overflow-x-hidden relative">
+            {/* Background Texture (The Desk/Table) */}
+            <div className="fixed inset-0 z-0">
+                <img src="/bg2.png" alt="Background" className="w-full h-full object-cover opacity-90" />
+            </div>
+
+            <div ref={resultRef} className="relative z-10 w-full min-h-screen pb-20">
+                {/* Navigation / Header Bar */}
+                <header className="w-full bg-white/90 backdrop-blur-sm py-4 px-6 md:px-12 flex justify-between items-center border-b border-gray-200 shadow-sm relative z-50 sticky top-0">
                     <div className="flex items-center space-x-2">
-                        <img src="logo-footer.png" alt="" className="w-16" />
-                        <a href="/" className="font-bold text-xl tracking-tighter ml-2">XALO ENGLISH</a>
-                    </div>
-                    <div className="hidden md:flex space-x-6 text-sm font-medium text-gray-500">
-                        <a href="/" className="hover:text-black transition-colors">HOME</a>
-                        <a href="https://xalo.edu.vn/" className="hover:text-black transition-colors">ABOUT XALO</a>
+                        <img src="logo-footer.png" alt="" className="w-12 h-12" />
+                        <a href="/" className="font-bold text-lg tracking-tighter ml-2 font-bricolage">XALO ENGLISH</a>
                     </div>
                 </header>
 
-                {/* 1. HEADER SECTION */}
-                <div className="bg-white pt-12  border-b border-gray-200">
-                    <div className="max-w-full ">
-                        <h1 className="text-6xl md:text-8xl ms-6 font-black uppercase tracking-tighter mb-8">
-                            YOUR IELTS DNA IS...
-                        </h1>
+                <div className="max-w-6xl mx-auto pt-12 px-4 md:px-8">
 
-                        <div className="grid grid-cols-1 md:grid-cols-12 border">
-                            {/* Left: Text Info */}
-                            <div className="md:col-span-7 bg-[#8B9DFF] p-8 md:p-12 rounded-none relative overflow-hidden">
-                                <h2 className="font-serif italic text-4xl md:text-5xl mb-2 text-black font-bricolage">
-                                    {profile.name}
-                                </h2>
+                    {/* --- MAIN PROFILE RECORD COMPONENT --- */}
+                    <div className="relative mb-24 group">
+                        {/* Decorative Tape/Clip */}
+                        <img src="/ele1.png" alt="Tape" className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-48 z-20 drop-shadow-md opacity-90" />
 
-                                <div className="font-bricolage italic text-xs md:text-sm space-y-1 mb-8 opacity-70">
-                                    <p>{result.learningType}</p>
-                                    <p>DATE: {new Date().toLocaleDateString()}</p>
+                        {/* Paper Sheet */}
+                        <div className="bg-[#FDFBF7] p-8 md:p-12 shadow-2xl transform rotate-1 rounded-sm relative border border-gray-300 min-h-[600px] flex flex-col mx-auto max-w-5xl">
+                            {/* Texture Overlay for Paper */}
+                            <div className="absolute inset-0 bg-[url('/bg1.png')] opacity-10 pointer-events-none mix-blend-multiply"></div>
+
+                            {/* Inner Content */}
+                            <div className="relative z-10 flex flex-col md:flex-row gap-12">
+
+                                {/* LEFT: DATA FIELDS (Typewriter Style) */}
+                                <div className="flex-1 space-y-6">
+                                    <div className="border-b-2 border-dashed border-gray-400 pb-4 mb-8">
+                                        <div className="flex justify-between items-end">
+                                            <div className="flex items-center gap-3">
+                                                {/* Stamp/Badge */}
+                                                <img src="/logo.png" className="w-12 h-12 opacity-80 grayscale" alt="Seal" />
+                                                <div>
+                                                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-500">CONFIDENTIAL RECORD</h3>
+                                                    <p className="text-xs font-mono text-gray-400">#DID-{new Date().getFullYear()}-{Math.floor(Math.random() * 10000)}</p>
+                                                </div>
+                                            </div>
+                                            <div className="text-right">
+                                                <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-gray-900 font-bricolage">
+                                                    CASE FILE
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Data Rows */}
+                                    <div className="font-mono text-sm md:text-base space-y-4">
+                                        <div className="grid grid-cols-12 gap-4 items-baseline border-b border-gray-200 pb-2">
+                                            <span className="col-span-4 font-bold text-gray-500 uppercase">SUBJECT NAME:</span>
+                                            <span className="col-span-8 font-bold text-lg">{profile.name}</span>
+                                        </div>
+                                        <div className="grid grid-cols-12 gap-4 items-baseline border-b border-gray-200 pb-2">
+                                            <span className="col-span-4 font-bold text-gray-500 uppercase">CODENAME:</span>
+                                            <span className="col-span-8 italic">{profile.subtitle || result.learningType}</span>
+                                        </div>
+                                        <div className="grid grid-cols-12 gap-4 items-baseline border-b border-gray-200 pb-2">
+                                            <span className="col-span-4 font-bold text-gray-500 uppercase">DATE RECORDED:</span>
+                                            <span className="col-span-8">{new Date().toLocaleDateString()}</span>
+                                        </div>
+                                        <div className="grid grid-cols-12 gap-4 items-start border-b border-gray-200 pb-2">
+                                            <span className="col-span-4 font-bold text-gray-500 uppercase">DESCRIPTION:</span>
+                                            <span className="col-span-8 leading-relaxed text-gray-800">
+                                                {profile.description}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Footer of the Record */}
+                                    <div className="pt-8 mt-auto">
+                                        <div className="inline-block border-4 border-red-700 p-2 transform -rotate-3 opacity-80 mix-blend-multiply">
+                                            <span className="text-xl font-black text-red-700 uppercase">CLASSIFIED</span>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <p className="text-sm md:text-base leading-relaxed font-medium max-w-xl">
-                                    {profile.description}
+                                {/* RIGHT: POLAROID PHOTO */}
+                                <div className="w-full md:w-80 flex-shrink-0 relative">
+                                    {/* Clip Image */}
+                                    <img src="/ele2.png" alt="Clip" className="absolute -top-8 right-12 w-16 z-20 drop-shadow-lg" />
+
+                                    <div className="bg-white p-4 pb-16 shadow-lg transform rotate-2 border border-gray-200 relative">
+                                        <div className="bg-gray-100 w-full aspect-[4/5] overflow-hidden relative filter sepia-[.2] contrast-110">
+                                            <img src={profile.image} alt={profile.name} className="w-full h-full object-cover mix-blend-multiply opacity-90" />
+                                            {/* Grain/Texture overlay for photo */}
+                                            <div className="absolute inset-0 bg-black opacity-5 mix-blend-overlay"></div>
+                                        </div>
+                                        <div className="absolute bottom-4 left-0 w-full text-center font-caveat text-2xl text-gray-600 rotate-[-1deg] font-handwriting">
+                                            {profile.name}
+                                        </div>
+                                    </div>
+
+                                    {/* Sticker/Stamp */}
+                                    {/* <img src="/ele4.png" alt="Sticker" className="absolute -bottom-6 -right-6 w-24 opacity-90 transform rotate-12" /> */}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {/* --- INGREDIENTS AS NOTES --- */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 relative">
+                        {/* Title floated via CSS or just header */}
+                        <h2 className="absolute -top-16 left-0 w-full text-center font-bricolage font-black text-5xl text-white drop-shadow-md md:text-black md:text-opacity-80 md:drop-shadow-none z-0">
+                            ANALYSIS: INGREDIENTS
+                        </h2>
+
+                        {/* Card 1 */}
+                        <div className="transform rotate-[-2deg] hover:rotate-0 transition-transform duration-300 relative group z-10">
+                            <img src="/ele6.png" className="absolute -top-12 left-1/8 transform -translate-x-1/2 w-24 h-auto z-20 opacity-90" />
+                            <div className="bg-[#FFFCE8] p-6 shadow-xl relative min-h-[300px] flex flex-col border border-yellow-200/50">
+                                <h3 className="font-bold text-center text-lg mb-4 text-red-800 border-b-2 border-red-800/20 pb-2">KNOWLEDGE</h3>
+                                <p className="text-sm font-handwriting leading-loose text-gray-800 flex-1">
+                                    {profile.ingredients.knowledge}
                                 </p>
+                                <div className="h-2 w-full bg-red-800/10 mt-4 rounded-full"></div>
                             </div>
+                        </div>
 
-                            {/* Right: Image Placeholder */}
-                            <div className="md:col-span-5 bg-gray-300 min-h-[300px] flex items-center justify-center relative">
-                                <span className="font-serif italic text-4xl text-white">
-                                    <img src={profile.image} alt="" />
-                                </span>
+                        {/* Card 2 */}
+                        <div className="transform rotate-[1deg] hover:rotate-0 transition-transform duration-300 relative group z-20 mt-8 md:mt-0">
+                            <img src="/ele2.png" className="absolute -top-4 -right-2 w-12 h-auto z-20 opacity-80" />
+                            <div className="bg-[#F0F8FF] p-6 shadow-xl relative min-h-[300px] flex flex-col border border-blue-200/50">
+                                <h3 className="font-bold text-center text-lg mb-4 text-blue-800 border-b-2 border-blue-800/20 pb-2">SKILLS</h3>
+                                <p className="text-sm font-handwriting leading-loose text-gray-800 flex-1">
+                                    {profile.ingredients.skills}
+                                </p>
+                                <div className="h-2 w-full bg-blue-800/10 mt-4 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        {/* Card 3 */}
+                        <div className="transform rotate-[-1deg] hover:rotate-0 transition-transform duration-300 relative group z-10 mt-8 md:mt-0">
+                            <img src="/ele1.png" className="absolute -top-4 left-8 w-24 h-auto z-20 opacity-80" />
+                            <div className="bg-[#FFF0F5] p-6 shadow-xl relative min-h-[300px] flex flex-col border border-pink-200/50">
+                                <h3 className="font-bold text-center text-lg mb-4 text-pink-800 border-b-2 border-pink-800/20 pb-2">BEHAVIOR</h3>
+                                <p className="text-sm font-handwriting leading-loose text-gray-800 flex-1">
+                                    {profile.ingredients.behavior}
+                                </p>
+                                <div className="h-2 w-full bg-pink-800/10 mt-4 rounded-full"></div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* 2. INGREDIENTS SECTION (THÀNH PHẦN) */}
-                <div className="min-h-[60px] bg-white p-6">
 
-                    <h2 className="font-bricolage ms-16 italic text-4xl md:text-5xl text-start">
-                        THÀNH PHẦN
-                    </h2>
-                </div>
-                <section className="py-16 px-4 md:px-8 max-w-full mx-auto bg-[#F4F4FF]">
+                    {/* --- STATS REPORT (Graph Paper) --- */}
+                    <div className="relative mb-24 max-w-5xl mx-auto">
+                        <img src="/ele3.png" className="absolute -top-10 -left-10 w-32 z-20 hidden md:block" />
+                        <div className="bg-white shadow-2xl p-8 md:p-12 transform rotate-1 border border-gray-300 relative">
+                            {/* Graph Paper Pattern */}
+                            <div className="absolute inset-0 opacity-10 pointer-events-none"
+                                style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+                            </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Knowledge Card */}
-                        <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-center">
-                                HOẠT CHẤT NỀN TẢNG<br />(KIẾN THỨC)
-                            </h3>
-                            <div className="h-48 rounded-lg mb-6 bg-gradient-to-br from-[#FF9A9E] to-[#FECFEF]"></div>
-                            <p className="text-xs text-gray-600 text-center leading-relaxed">
-                                {profile.ingredients.knowledge}
-                            </p>
-                        </div>
-
-                        {/* Skills Card */}
-                        <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-center">
-                                CƠ CHẾ KÍCH HOẠT<br />(KỸ NĂNG LÀM BÀI THI)
-                            </h3>
-                            <div className="h-48 rounded-lg mb-6 bg-gradient-to-br from-[#a18cd1] to-[#fbc2eb]"></div>
-                            <p className="text-xs text-gray-600 text-center leading-relaxed">
-                                {profile.ingredients.skills}
-                            </p>
-                        </div>
-
-                        {/* Behavior Card */}
-                        <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-center">
-                                HOẠT CHẤT ĐIỀU HÒA<br />(THÁI ĐỘ HỌC TẬP)
-                            </h3>
-                            <div className="h-48 rounded-lg mb-6 bg-gradient-to-br from-[#84fab0] to-[#8fd3f4]"></div>
-                            <p className="text-xs text-gray-600 text-center leading-relaxed">
-                                {profile.ingredients.behavior}
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* 3. SIDE EFFECTS SECTION (TÁC DỤNG PHỤ) */}
-                <section className="py-16 bg-[#E0E7FF] px-4 md:px-8">
-                    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h2 className="font-bricolage italic text-4xl md:text-5xl mb-8">
-                                TÁC DỤNG PHỤ
+                            <h2 className="text-3xl font-black uppercase mb-12 text-center underline decoration-wavy decoration-blue-500 relative z-10">
+                                HEALTH STATISTICS REPORT
                             </h2>
-                            <p className="text-sm md:text-base leading-relaxed text-gray-800 mb-6">
-                                &lt;!&gt; Lưu ý: Mỗi loại "thuốc" học tập đều có những phản ứng không mong muốn.
-                            </p>
-                            <p className="text-sm md:text-base leading-relaxed text-gray-800 font-medium">
-                                {profile.sideEffects}
-                            </p>
-                        </div>
-                        <div className="flex justify-center">
-                            {/* Butterfly Icon Placeholder */}
-                            <div className="w-64 h-64 bg-white/50 rounded-full flex items-center justify-center">
-                                <span className="font-serif italic text-2xl text-[#8B9DFF]">
-                                    <img src="butterfly-icon.png" alt="" />
-                                </span>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+                                {/* Chart 1 */}
+                                <div className="flex flex-col items-center">
+                                    <div className="w-40 h-40 relative mb-4">
+                                        <ResponsiveContainer width="100%" height="100%">
+                                            <PieChart>
+                                                <Pie data={createCombinedChartData(knowledgeScore)} innerRadius={50} outerRadius={70} dataKey="value" startAngle={90} endAngle={-270} stroke="none">
+                                                    <Cell fill={COLORS.knowledge[0]} />
+                                                    <Cell fill="#FF6B6B" />
+                                                    <Cell fill="#eee" />
+                                                </Pie>
+                                            </PieChart>
+                                        </ResponsiveContainer>
+                                        <div className="absolute inset-0 flex items-center justify-center font-bold text-xl text-gray-700">
+                                            {Math.round(knowledgeScore * 95)}%
+                                        </div>
+                                    </div>
+                                    <span className="font-mono font-bold text-sm uppercase bg-black text-white px-2 py-1 rotate-[-2deg]">KNOWLEDGE</span>
+                                </div>
+
+                                {/* Chart 2 */}
+                                <div className="flex flex-col items-center">
+                                    <div className="w-40 h-40 relative mb-4">
+                                        <ResponsiveContainer width="100%" height="100%">
+                                            <PieChart>
+                                                <Pie data={createCombinedChartData(skillsScore)} innerRadius={50} outerRadius={70} dataKey="value" startAngle={90} endAngle={-270} stroke="none">
+                                                    <Cell fill={COLORS.skills[0]} />
+                                                    <Cell fill="#FF6B6B" />
+                                                    <Cell fill="#eee" />
+                                                </Pie>
+                                            </PieChart>
+                                        </ResponsiveContainer>
+                                        <div className="absolute inset-0 flex items-center justify-center font-bold text-xl text-gray-700">
+                                            {Math.round(skillsScore * 95)}%
+                                        </div>
+                                    </div>
+                                    <span className="font-mono font-bold text-sm uppercase bg-black text-white px-2 py-1 rotate-[1deg]">SKILLS</span>
+                                </div>
+
+                                {/* Chart 3 */}
+                                <div className="flex flex-col items-center">
+                                    <div className="w-40 h-40 relative mb-4">
+                                        <ResponsiveContainer width="100%" height="100%">
+                                            <PieChart>
+                                                <Pie data={createCombinedChartData(behaviorScore)} innerRadius={50} outerRadius={70} dataKey="value" startAngle={90} endAngle={-270} stroke="none">
+                                                    <Cell fill={COLORS.behavior[0]} />
+                                                    <Cell fill="#FF6B6B" />
+                                                    <Cell fill="#eee" />
+                                                </Pie>
+                                            </PieChart>
+                                        </ResponsiveContainer>
+                                        <div className="absolute inset-0 flex items-center justify-center font-bold text-xl text-gray-700">
+                                            {Math.round(behaviorScore * 95)}%
+                                        </div>
+                                    </div>
+                                    <span className="font-mono font-bold text-sm uppercase bg-black text-white px-2 py-1 rotate-[-1deg]">BEHAVIOR</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </section>
 
-                {/* 4. HEALTH LEVEL SECTION (MỨC ĐỘ SỨC KHỎE HỌC TẬP) */}
-                <section
-                    className="
-                    py-16 px-4 md:px-8 max-w-full mx-auto
-                    bg-gradient-to-br from-purple-50 to-white 
-                    from-pink-50 
-                "
-                >
-                    <h2 className="font-serif italic text-4xl md:text-5xl text-center mb-16 font-bricolage">
-                        MỨC ĐỘ SỨC KHỎE HỌC TẬP
-                    </h2>
 
-                    <div className="space-y-16">
-                        {/* Knowledge Stats */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
-                            <div className="text-center md:text-right">
-                                <h3 className="font-bold text-sm uppercase mb-2">mức độ sở hữu kiến thức</h3>
-                                <span className="font-black text-4xl text-[#8B9DFF]">{Math.round(knowledgeScore * 55)}%</span>
-                            </div>
+                    {/* --- PRESCRIPTION & SIDE EFFECTS (Sticky Notes) --- */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32 max-w-6xl mx-auto">
 
-                            <div className="h-48 w-48 mx-auto relative">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <PieChart>
-                                        <Pie
-                                            data={createCombinedChartData(knowledgeScore)}
-                                            innerRadius={60}
-                                            outerRadius={80}
-                                            dataKey="value"
-                                            startAngle={90}
-                                            endAngle={-270}
-                                            stroke="none"
-                                        >
-                                            <Cell fill={COLORS.knowledge[0]} />
-                                            <Cell fill="#FF6B6B" />
-                                            <Cell fill="#f5e8feff" />
-                                        </Pie>
-                                    </PieChart>
-                                </ResponsiveContainer>
-                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                    <span className="text-2xl font-bold text-gray-400">
-                                        {Math.round(knowledgeScore * 55) + Math.round(knowledgeScore * 40)}%
-                                    </span>
+                        {/* Prescription Note */}
+                        {profile.combo && (
+                            <div className="relative group">
+                                <img src="/ele1.png" className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-32 z-20 opacity-90" />
+                                <div className="bg-[#EFFFF5] p-8 shadow-xl transform rotate-[-2deg] border border-green-200 relative min-h-[350px]">
+                                    <h3 className="font-black text-2xl mb-6 text-green-800 uppercase flex items-center gap-2">
+                                        <span className="text-3xl">💊</span> COMBO KÊ ĐƠN
+                                    </h3>
+                                    <div className="text-gray-800 leading-relaxed whitespace-pre-line font-medium">
+                                        {profile.combo}
+                                    </div>
+                                    <div className="absolute bottom-4 right-4 opacity-50">
+                                        <img src="doctorCombo.png" className="w-24 mix-blend-multiply grayscale" />
+                                    </div>
                                 </div>
                             </div>
+                        )}
 
-                            <div className="text-center md:text-left">
-                                <h3 className="font-bold text-sm uppercase mb-2">mức độ áp dụng kiến thức</h3>
-                                <span className="font-black text-4xl text-[#FF6B6B]">{Math.round(knowledgeScore * 40)}%</span>
+                        {/* Side Effects Note */}
+                        <div className="relative group mt-12 md:mt-0">
+                            <img src="/ele2.png" className="absolute -top-3 right-1/2 transform translate-x-1/2 w-16 z-20 opacity-90" />
+                            <div className="bg-[#FFF0F0] p-8 shadow-xl transform rotate-[2deg] border border-red-200 relative min-h-[350px]">
+                                <h3 className="font-black text-2xl mb-6 text-red-800 uppercase flex items-center gap-2">
+                                    <span className="text-3xl">⚠️</span> TÁC DỤNG PHỤ
+                                </h3>
+                                <p className="text-gray-800 leading-relaxed font-medium mb-4">
+                                    {profile.sideEffects}
+                                </p>
+                                <p className="text-xs text-red-600 italic mt-4 border-t border-red-200 pt-2">
+                                    *Lưu ý: Đọc kỹ hướng dẫn sử dụng trước khi dùng.
+                                </p>
+                                <div className="absolute bottom-2 right-2 opacity-60">
+                                    <img src="butterfly-icon.png" className="w-20 mix-blend-multiply" />
+                                </div>
                             </div>
                         </div>
 
-                        {/* Skills Stats */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
-                            <div className="text-center md:text-right">
-                                <h3 className="font-bold text-sm uppercase mb-2">mức độ nắm bắt chiến thuật</h3>
-                                <span className="font-black text-4xl text-[#8B9DFF]">{Math.round(skillsScore * 55)}%</span>
-                            </div>
+                    </div>
 
-                            <div className="h-48 w-48 mx-auto relative">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <PieChart>
-                                        <Pie
-                                            data={createCombinedChartData(skillsScore)}
-                                            innerRadius={60}
-                                            outerRadius={80}
-                                            dataKey="value"
-                                            startAngle={90}
-                                            endAngle={-270}
-                                            stroke="none"
-                                        >
-                                            <Cell fill={COLORS.knowledge[0]} />
-                                            <Cell fill="#FF6B6B" />
-                                            <Cell fill="#f5e8feff" />
-                                        </Pie>
-                                    </PieChart>
-                                </ResponsiveContainer>
-                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                    <span className="text-2xl font-bold text-gray-400">
-                                        {Math.round(skillsScore * 55) + Math.round(skillsScore * 40)}%
-                                    </span>
+
+                    {/* --- CTA SECTION (Ticket/Stamp) --- */}
+                    <div className="text-center relative pb-20">
+                        <div className="relative z-10 inline-block">
+                            <div className="bg-white p-2 shadow-2xl transform rotate-1 border-4 border-dashed border-gray-400 rounded-lg">
+                                <div className="bg-[#8B9DFF] p-8 text-white">
+                                    <h2 className="font-black text-3xl md:text-5xl mb-4 text-white">
+                                        SẴN SÀNG CHINH PHỤC?
+                                    </h2>
+                                    <Button
+                                        size="lg"
+                                        className="bg-black text-white hover:bg-gray-800 font-bold py-6 px-12 rounded-none uppercase tracking-widest text-xl shadow-lg mt-4 transform hover:scale-105 transition-transform"
+                                        onClick={clickedOn}
+                                        disabled={isDownloading}
+                                    >
+                                        TẢI HỒ SƠ CỦA BẠN
+                                    </Button>
                                 </div>
                             </div>
-
-                            <div className="text-center md:text-left">
-                                <h3 className="font-bold text-sm uppercase mb-2">mức độ vận dụng chiến thuật</h3>
-                                <span className="font-black text-4xl text-[#FF6B6B]">{Math.round(skillsScore * 40)}%</span>
-                            </div>
-                        </div>
-
-                        {/* Behavior Stats */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
-                            <div className="text-center md:text-right">
-                                <h3 className="font-bold text-sm uppercase mb-2">mức độ chủ động</h3>
-                                <span className="font-black text-4xl text-[#8B9DFF]">{Math.round(behaviorScore * 55)}%</span>
-                            </div>
-
-                            <div className="h-48 w-48 mx-auto relative">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <PieChart>
-                                        <Pie
-                                            data={createCombinedChartData(behaviorScore)}
-                                            innerRadius={60}
-                                            outerRadius={80}
-                                            dataKey="value"
-                                            startAngle={90}
-                                            endAngle={-270}
-                                            stroke="none"
-                                        >
-                                            <Cell fill={COLORS.knowledge[0]} />
-                                            <Cell fill="#FF6B6B" />
-                                            <Cell fill="#f5e8feff" />
-                                        </Pie>
-                                    </PieChart>
-                                </ResponsiveContainer>
-                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                    <span className="text-2xl font-bold text-gray-400">
-                                        {Math.round(behaviorScore * 55) + Math.round(behaviorScore * 40)}%
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div className="text-center md:text-left">
-                                <h3 className="font-bold text-sm uppercase mb-2">mức độ kiểm soát & phản ứng</h3>
-                                <span className="font-black text-4xl text-[#FF6B6B]">{Math.round(behaviorScore * 40)}%</span>
-                            </div>
+                            <img src="/ele5.png" className="absolute -bottom-10 -right-10 w-32 z-20 animate-pulse hidden" />
                         </div>
                     </div>
-                </section>
 
+                </div>
+
+                {/* Footer outside the layout slightly or effectively at bottom */}
+                <footer className="w-full bg-white/80 backdrop-blur-md mt-20 border-t border-gray-200 py-8 text-center text-xs font-mono text-gray-500">
+                    <p>COPYRIGHT © {new Date().getFullYear()} XALO ENGLISH. DO NOT DISTRIBUTE.</p>
+                </footer>
             </div>
-
-            {/* 5. FOOTER / CTA */}
-            <section className="py-20 bg-gradient-to-b from-[#8B9DFF] to-[#E0E7FF] text-center px-4">
-                <h2 className="font-serif italic text-4xl md:text-5xl mb-4">
-                    SẴN SÀNG CHO BƯỚC TIẾP THEO?
-                </h2>
-                <h3 className="font-serif italic text-3xl md:text-4xl mb-12">
-                    CÙNG XEM LỘ TRÌNH TỰ HỌC CÁ<br />NHÂN HOÁ CỦA BẠN.
-                </h3>
-
-                <Button
-                    className="bg-black text-white hover:bg-gray-800 font-bold py-4 px-10 rounded-sm uppercase tracking-widest text-lg shadow-xl"
-                    onClick={clickedOn}
-                    disabled={isDownloading}
-                >
-                    NHẬN KẾT QUẢ CỦA BẠN
-                </Button>
-            </section>
-
-            <footer className="bg-[#F4F4FF] px-4 border-t border-gray-200 min-h-[300px] flex flex-col">
-                <div className="flex justify-between items-start mt-6">
-                    <div className="flex items-center space-x-1">
-                        <img src="logo-footer.png" alt="" className="w-16" />
-
-                    </div>
-                    <span className="font-bricolage italic text-3xl">XA LỘ ENGLISH</span>
-                </div>
-
-                <div className="flex justify-between items-start mt-auto mb-6 text-xs font-bold uppercase tracking-wider">
-                    <div>
-                        <h4 className="mb-4 text-gray-400">CONTACT</h4>
-                        <p>Email: hello@xalo.edu.vn</p>
-                        <p>Phone: 0793 159 413</p>
-                    </div>
-                    <div>
-                        <h4 className="mb-4 text-gray-400">OPENING HOURS</h4>
-                        <div className="flex justify-between max-w-xs">
-                            <span>MON - SAT</span>
-                            <span>9AM - 10PM</span>
-                        </div>
-                        <div className="flex justify-between max-w-xs">
-                            <span>SUNDAYS</span>
-                            <span>8AM - 12PM</span>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 className="mb-4 text-gray-400">SOCIAL</h4>
-                        <ul className="space-y-1">
-                            <li>
-                                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
-                                    Instagram
-                                </a>
-                            </li>
-                            <li>
-                                <a rel="stylesheet" href="https://www.instagram.com/xalo.english/">
-                                    Facebook
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
 
             {/* Email Modal */}
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
@@ -487,7 +474,7 @@ const ResultPage = () => {
                             </Label>
                             <Input
                                 id="phoneNumber"
-                                type="tel" // Đổi type thành tel cho phù hợp
+                                type="tel"
                                 placeholder="090 XXX XXXX"
                                 className="col-span-3"
                                 value={phoneNumber}
