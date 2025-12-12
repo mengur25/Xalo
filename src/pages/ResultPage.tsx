@@ -149,7 +149,7 @@ const ResultPage = () => {
         <div className="min-h-screen bg-stone-900 font-sans text-black overflow-x-hidden relative">
             {/* Background Texture (The Desk/Table) */}
             <div className="fixed inset-0 z-0">
-                <img src="/bg2.png" alt="Background" className="w-full h-full object-cover opacity-90" />
+                <img src="/bg1.png" alt="Background" className="w-full h-full object-cover opacity-90" />
             </div>
 
             <div ref={resultRef} className="relative z-10 w-full min-h-screen pb-20">
